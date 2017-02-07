@@ -110,7 +110,7 @@ header {
 }
 #content {
   background-color: #fff;
-  min-height: 900px;
+  position: relative;
   &.fixed {
     padding-top: 40px;
   }
@@ -187,6 +187,48 @@ header {
       }
     }
   }
+  #polaroid-gallery {
+    position: absolute;
+    right: 0;
+    width: 300px;
+    top: -40px;
+    bottom: 0;
+    z-index: 1;
+    .polaroid {
+      padding: 20px;
+      padding-bottom: 0;
+      box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
+      -webkit-backface-visibility: hidden;
+      background: white;
+      .image {
+        margin-bottom: 20px;
+        height: 210px;
+        width: 260px;
+        background: url(/images/slide1.jpg);
+        background-size: cover;
+      }
+      .description {
+        font-size: 15px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-align: center;
+      }
+    }
+    .polaroid:nth-of-type(4n) {
+      transform: rotate(-12deg);
+    }
+    .polaroid:nth-of-type(4n+1) {
+      transform: rotate(22deg);
+    }
+    .polaroid:nth-of-type(4n+2) {
+      transform: rotate(-22deg);
+    }
+    .polaroid:nth-of-type(4n+3) {
+      transform: rotate(12deg);
+    }
+
+  }
   hr {
     width: calc(100% - 90px);
     margin-top: 40px;
@@ -194,72 +236,72 @@ header {
     margin-left: 40px;
     margin-right: 40px;
   }
-  footer {
-    padding-left: 40px;
-    padding-right: 40px;
-    font-size: 20px;
-    h2 {
-      font-size: 30px;
-    }
-    .top {
-      display: -webkit-flex;
-      display: -ms-flex;
-      display: flex;
-      justify-content: space-between;
-      .left {
-        &>div {
-          padding-left: 40px;
-          position: relative;
-          img {
-            position: absolute;
-            height: 20px;
-            left: 0;
-            top: 5px;
-            &.address {
-              left: 7px;
-            }
+}
+footer {
+  padding-left: 40px;
+  padding-right: 40px;
+  font-size: 20px;
+  h2 {
+    font-size: 30px;
+  }
+  .top {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-between;
+    .left {
+      &>div {
+        padding-left: 40px;
+        position: relative;
+        img {
+          position: absolute;
+          height: 20px;
+          left: 0;
+          top: 5px;
+          &.address {
+            left: 7px;
           }
         }
       }
-      .right {
-          .input-group {
-            width: 400px;
-            button {
-              background: black;
-              color: white;
-              border: none;
-              padding: 12px;
-              height: 55px;
-              width: 100px;
+    }
+    .right {
+        .input-group {
+          width: 400px;
+          button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 12px;
+            height: 55px;
+            width: 100px;
+            font-family: 'La Belle Aurore', cursive;
+            font-size: 20px;
+          }
+          input {
+            width: calc(100% - 99px);
+            background-color: #f7f7f7;
+            margin: 0;
+            margin-right: -11px;
+            height: 55px;
+            position: relative;
+            top: -4px;
+            padding-left: 10px;
+            color: #000;
+            font-family: La Belle Aurore,cursive;
+            border: 1px solid #dbdbdb;
+            font-size: 20px;
+            outline: none;
+            &::placeholder {
               font-family: 'La Belle Aurore', cursive;
-              font-size: 20px;
-            }
-            input {
-              width: calc(100% - 99px);
-              background-color: #f7f7f7;
-              margin: 0;
-              margin-right: -11px;
-              height: 55px;
-              position: relative;
-              top: -4px;
-              padding-left: 10px;
-              color: #000;
-              font-family: La Belle Aurore,cursive;
-              border: 1px solid #dbdbdb;
-              font-size: 20px;
-              outline: none;
-              &::placeholder {
-                font-family: 'La Belle Aurore', cursive;
-                color: black;
-              }
+              color: black;
             }
           }
-      }
+        }
     }
-    .bottom {
-      text-align: center;
-      padding-bottom: 20px;
-      padding-top: 20px;
-    }
+  }
+  .bottom {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
   }
 }
