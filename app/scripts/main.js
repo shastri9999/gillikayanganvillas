@@ -139,11 +139,20 @@
       $('.form-error').addClass('hide');
     };
 
+    var showFlashMessage = function(message) {
+      $('#flash-message').addClass('show').text(message);
+      setTimeout(function() {
+        $('#flash-message').removeClass('show');
+      }, 1500);
+    };
+
     $('#say-hello-form').submit(function(event) {
       var message = $('#message').val();
       var email = $('#email').val();
       var name = $('#name').val();
+
       event.preventDefault();
+
       hideError();
       if (!name) {
         showFormError('Please fill in the Name.');
@@ -157,6 +166,21 @@
         showFormError('Please fill in the Message.');
         return;
       }
+
+      $.ajax({
+        url: 'http://gilikhayangan-shastri9999.c9users.io:8081/',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(
+          {
+            to: name + ' <' + email + '>',
+            message: message
+          }
+        ),
+        success: function() {
+          showFlashMessage('Your Message has reached us!');
+        }
+      });
     });
   });
 })();
