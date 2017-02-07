@@ -1,0 +1,269 @@
+$max-content-width: calc(100vw - 400px);
+html, body {
+  font-family: 'La Belle Aurore', cursive;
+  margin: 0;
+  padding: 0;
+  font-size: 30px;
+}
+* {
+  box-sizing: border-box;
+}
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+    padding-top: 25px;
+    &.fixed {
+      position: fixed;
+      padding-top: 5px;
+      background: white;
+      box-shadow: -4px -3px 12px #cfcfcf;
+      padding-bottom: 5px;
+      font-size: 18px;
+      a {
+        &.image {
+          position: relative;
+          top: 0;
+          img {
+            height: 40px;
+          }
+          .main-description {
+            display: none;
+          }
+        }
+        .underline {
+          height: 1px;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #593D29;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 0;
+      &.image {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        top: 90px;
+        left: 40px;
+        &>img {
+          height: 50vh;
+        }
+        .main-description {
+          max-width: 550px;
+          img {
+            height: 20vh;
+          }
+        }
+      }
+      .underline {
+        height: 2px;
+        background-color: #593d29;
+        width: 0%;
+        box-shadow: 1px 1px 1px;
+        -webkit-transition: width 0.3s ease-in-out;
+        -moz-transition: width 0.3s ease-in-out;
+        -o-transition: width 0.3s ease-in-out;
+        transition: width 0.3s ease-in-out;
+      }
+      &:hover {
+        transform: scale(1.1);
+        &.image {
+          transform: none;
+        }
+        .underline {
+          width: 100%;
+        }
+      }
+    }
+}
+.hero-slider {
+  .slide {
+    height: 90vh;
+    background-size: cover;
+  }
+  .slide-1{
+    background-image: url(/images/slide1.jpg);
+  }
+  .slide-2{
+    background-image: url(/images/slide2.jpg);
+  }
+  .slide-3{
+    background-image: url(/images/slide3.jpg);
+  }
+  .owl-nav.disabled+.owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -96px;
+  }
+}
+#content {
+  background-color: #fff;
+  min-height: 900px;
+  &.fixed {
+    padding-top: 40px;
+  }
+  #location {
+    padding-left: 40px;
+    padding-top: 40px;
+    max-width: $max-content-width;
+    p {
+      font-size: 15px;
+    }
+    .maps {
+      img {
+        width: 40%;
+        display: inline-block;
+        &.map {
+          height: 250px;
+          width: auto;
+          margin-left: 50%;
+        }
+      }
+    }
+  }
+  #accomodation {
+    padding-left: 40px;
+    max-width: $max-content-width;
+    .rooms {
+      img {
+        width: 50%;
+      }
+    }
+  }
+  #threesixty{
+    padding-left: 40px;
+    max-width: $max-content-width;
+    height: 300px;
+  }
+  #sayhello {
+    padding-left: 40px;
+    form {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      flex-direction: column;
+      max-width: $max-content-width;
+      input, textarea {
+        background-color: #F7F7F7;
+        outline: 0;
+        padding: 10px;
+        margin-bottom: 10px;
+        width: 80%;
+        font-size: 25px;
+        color: black;
+        font-family: 'La Belle Aurore', cursive;
+        border: 1px solid #DBDBDB;
+        border-radius: 3px;
+        &::placeholder {
+          font-family: 'La Belle Aurore', cursive;
+          color: black;
+        }
+      }
+      textarea {
+        height: 250px;
+        resize: none;
+      }
+      input[type=submit]{
+        width: 300px;
+        color: white;
+        background: black;
+        cursor: pointer;
+        border: none;
+      }
+      .form-error {
+        color: red;
+        font-size: 15px;
+        &.hide {
+          display: none;
+        }
+      }
+    }
+  }
+  hr {
+    width: calc(100% - 90px);
+    margin-top: 40px;
+    margin-bottom: 25px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  footer {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    h2 {
+      font-size: 30px;
+    }
+    .top {
+      display: -webkit-flex;
+      display: -ms-flex;
+      display: flex;
+      justify-content: space-between;
+      .left {
+        &>div {
+          padding-left: 40px;
+          position: relative;
+          img {
+            position: absolute;
+            height: 20px;
+            left: 0;
+            top: 5px;
+            &.address {
+              left: 7px;
+            }
+          }
+        }
+      }
+      .right {
+          .input-group {
+            width: 400px;
+            button {
+              background: black;
+              color: white;
+              border: none;
+              padding: 12px;
+              height: 55px;
+              width: 100px;
+              font-family: 'La Belle Aurore', cursive;
+              font-size: 20px;
+            }
+            input {
+              width: calc(100% - 99px);
+              background-color: #f7f7f7;
+              margin: 0;
+              margin-right: -11px;
+              height: 55px;
+              position: relative;
+              top: -4px;
+              padding-left: 10px;
+              color: #000;
+              font-family: La Belle Aurore,cursive;
+              border: 1px solid #dbdbdb;
+              font-size: 20px;
+              outline: none;
+              &::placeholder {
+                font-family: 'La Belle Aurore', cursive;
+                color: black;
+              }
+            }
+          }
+      }
+    }
+    .bottom {
+      text-align: center;
+      padding-bottom: 20px;
+      padding-top: 20px;
+    }
+  }
+}
