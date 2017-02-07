@@ -122,15 +122,9 @@ header {
       font-size: 15px;
     }
     .maps {
-      img {
-        width: 40%;
-        display: inline-block;
-        &.map {
-          height: 250px;
-          width: auto;
-          margin-left: 50%;
+        .map {
+          width: 100%;
         }
-      }
     }
   }
   #accomodation {
@@ -145,7 +139,9 @@ header {
   #threesixty{
     padding-left: 40px;
     max-width: $max-content-width;
-    height: 300px;
+    img {
+      width: 100%;
+    }
   }
   #sayhello {
     padding-left: 40px;
