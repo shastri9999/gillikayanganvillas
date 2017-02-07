@@ -73,6 +73,28 @@
   }
   var $ = window.$;
   // Your custom JavaScript goes here
+  var loadImagesJson = function() {
+    $.getJSON('/images.json', function(data) {
+      var mainImages = data.main;
+      var polaroidGalleryElement = $('#polaroid-gallery');
+      mainImages.forEach(function(polaroid, index) {
+        var polaroidElement = $('<div class="polaroid">' +
+                                  '<div class="image"></div>' +
+                                  '<div class="description">' +
+                                  polaroid.description +
+                                  '</div>' +
+                                '</div>');
+        var sign = index % 2 ? '-' : '';
+        var degrees = sign + Math.floor(Math.random() * (10) + 15) + 'deg';
+        polaroidElement.data('degrees', degrees);
+        polaroidElement.css('transform', 'rotate(' + degrees + ')');
+        polaroidElement.find('.image')
+                       .css('background-image', 'url(' + polaroid.url + ')');
+        polaroidGalleryElement.append(polaroidElement);
+      });
+    });
+  };
+
   $(document).ready(function() {
     /* Main Hero element carousel code */
     $('.owl-carousel').owlCarousel({
@@ -81,6 +103,8 @@
       autoplayTimeout: 4000,
       loop: true
     });
+
+    loadImagesJson();
 
     /* Adding smoothness to scroll on navigation click */
     $('body').smoothScroll({
