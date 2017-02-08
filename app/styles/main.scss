@@ -142,18 +142,72 @@ header {
     max-width: calc(100vw - 40px);
     .rooms {
       .room {
+        position: relative;
+        height: 300px;
+        width: 100%;
+        &:hover {
+          height: 600px;
+        }
+      }
+      .room-overlay {
+        &>img{
+          position: absolute;
+          left: 450px;
+          height: 50px;
+          top: 90px;
+          transition: all 0.8s ease-in-out;
+          &.double {
+            height: 80px;
+          }
+          &.triple {
+            height: 150px;
+            top: -15px;
+            left: 350px;
+          }
+        }
+        transition: all 0.5s ease-in-out;
+        transform-origin: center center;
         display: flex;
         flex-direction: row;
         box-shadow: 1px 1px 4px #ccc;
-        padding: 20px;
-        height: 300px;
+        padding: 30px;
         padding-right: 260px;
         overflow: hidden;
-        img {
-          width : 300px;
+        cursor: pointer;
+        position: absolute;
+        background-color: #cee0f4;
+        color: #a7a39a;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        &:hover {
+          background-color: #feec44;
+          top: -10px;
+          left: -10px;
+          bottom: -10px;
+          right: -10px;
+          z-index: 2;
+          &>img {
+            height: 200px;
+            left: calc(100% - 410px);
+            &.single {
+              height: 100px;
+              left: calc(100% - 260px);
+            }
+            &.double {
+              height: 150px;
+              left: calc(100% - 295px);
+            }
+            &.triple {
+              height: 200px;
+              left: calc(100% - 230px);
+            }
+            transform: rotate(360deg);
+            top:10px;
+          }
         }
         .room-description {
-          padding: 30px;
           h2 {
             font-size: 24px;
           }

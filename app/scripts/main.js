@@ -135,7 +135,8 @@
               right: leftPadding,
               height: ph,
               width: pw,
-              rotate: 360}, function() {
+              duration: 1000,
+              rotate: -360}, function() {
                 animating = false;
               });
   };
@@ -166,7 +167,8 @@
               left: leftPadding,
               height: ph,
               width: pw,
-              rotate: -360}, function() {
+              duration: 1000,
+              rotate: 360}, function() {
                 animating = false;
               });
   };
@@ -297,6 +299,13 @@
     });
     $('#previous').on('click', function() {
       previousImage(currentPrefix);
+    });
+
+    $('.rooms').mouseenter(function() {
+      $('#polaroid-gallery').hide();
+    });
+    $('.rooms').mouseleave(function() {
+      $('#polaroid-gallery').show();
     });
 
     /* Adding smoothness to scroll on navigation click */
