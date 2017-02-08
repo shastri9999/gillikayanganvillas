@@ -201,7 +201,7 @@ header {
             }
             &.triple {
               height: 200px;
-              left: calc(100% - 230px);
+              left: calc(100% - 235px);
             }
             transform: rotate(360deg);
             top:10px;
@@ -261,9 +261,33 @@ header {
         background: black;
         cursor: pointer;
         border: none;
+        margin-bottom: 16px;
+        &:hover {
+          box-shadow: 1px 1px 7px;
+          opacity: 0.8;
+        }
         &:disabled {
           cursor: not-allowed;
           opacity: 0.4;
+        }
+      }
+      .form-loading {
+        display: inline-block;
+        width: 270px;
+        position: relative;
+        top: 28px;
+        &.hide {
+          display: none;
+        }
+        img {
+          height: 60px;
+        }
+        position: relative;
+        span {
+          position: absolute;
+          left: 65px;
+          top:20px;
+          font-size: 15px;
         }
       }
       .form-error {

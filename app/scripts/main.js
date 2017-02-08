@@ -394,7 +394,8 @@
         return;
       }
 
-      $('submit').prop('disabled', true);
+      $('.submit').prop('disabled', true);
+      $('.form-loading').removeClass('hide');
       $.ajax({
         url: 'http://gilikhayangan-shastri9999.c9users.io:8081/',
         type: 'POST',
@@ -407,10 +408,11 @@
         ),
         success: function() {
           showFlashMessage('Your Message has reached us!');
-          $('submit').prop('disabled', false);
+          $('.submit').prop('disabled', false);
           $('#message').val('');
           $('#email').val('');
           $('#name').val('');
+          $('.form-loading').addClass('hide');
         }
       });
     });
