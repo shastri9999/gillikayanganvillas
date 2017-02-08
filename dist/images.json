@@ -1,0 +1,94 @@
+{
+		"main": [{
+			"description": "Some lorem ipsum",
+			"url": "/images/slide1.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide4.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide1.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide2.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide1.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide2.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide4.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide4.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/slide3.jpg"
+		}],
+		"room1": [],
+		"room2": [],
+		"room3": [],
+		"room4": []
+	}
