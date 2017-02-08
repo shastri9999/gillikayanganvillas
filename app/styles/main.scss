@@ -186,6 +186,10 @@ header {
         background: black;
         cursor: pointer;
         border: none;
+        &:disabled {
+          cursor: not-allowed;
+          opacity: 0.4;
+        }
       }
       .form-error {
         color: red;
@@ -315,6 +319,8 @@ footer {
             width: 100px;
             font-family: 'La Belle Aurore', cursive;
             font-size: 20px;
+            outline: none;
+            cursor: pointer;
           }
           input {
             width: calc(100% - 99px);
