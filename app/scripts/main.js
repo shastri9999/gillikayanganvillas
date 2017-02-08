@@ -74,6 +74,11 @@
   var $ = window.$;
   // Your custom JavaScript goes here
 
+  var validateEmail = function(email) {
+    // eslint-disable-next-line max-len
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  };
   var currentAnimatedIndex = -1;
   var totalMainImages = 0;
   console.log(currentAnimatedIndex, totalMainImages);
@@ -302,6 +307,31 @@
       }, 1500);
     };
 
+    $('#sign-up').on('click', function() {
+      var email = $('#subscriber').val();
+      if (!validateEmail(email)) {
+        $('.subscriber-error').show();
+        return;
+      }
+      $('.subscriber-error').hide();
+      $('#signup').prop('disabled', true);
+      $.ajax({
+        url: 'http://gilikhayangan-shastri9999.c9users.io:8081/subscribe',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(
+          {
+            email: email
+          }
+        ),
+        success: function() {
+          showFlashMessage('You have successfully subscribed!');
+          $('#signup').prop('disabled', false);
+          $('#subscriber').val('');
+        }
+      });
+    });
+
     $('#say-hello-form').submit(function(event) {
       var message = $('#message').val();
       var email = $('#email').val();
@@ -314,8 +344,8 @@
         showFormError('Please fill in the Name.');
         return;
       }
-      if (!email) {
-        showFormError('Please fill in the Email.');
+      if (!validateEmail(email)) {
+        showFormError('Please fill in valid Email.');
         return;
       }
       if (!message) {
@@ -336,7 +366,7 @@
         ),
         success: function() {
           showFlashMessage('Your Message has reached us!');
-          $('submit').prop('disabled', true);
+          $('submit').prop('disabled', false);
           $('#message').val('');
           $('#email').val('');
           $('#name').val('');

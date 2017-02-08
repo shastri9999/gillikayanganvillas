@@ -308,6 +308,12 @@ footer {
       }
     }
     .right {
+        .subscriber-error {
+          font-size: 14px;
+          color: red;
+          text-align: right;
+          display: none;
+        }
         .input-group {
           width: 400px;
           button {
@@ -321,6 +327,9 @@ footer {
             font-size: 20px;
             outline: none;
             cursor: pointer;
+            &:disabled {
+              opacity: 0.4;
+            }
           }
           input {
             width: calc(100% - 99px);
