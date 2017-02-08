@@ -201,18 +201,27 @@ header {
     bottom: 0;
     z-index: 1;
     transform-origin: top right;
+    &.gallery{
+      z-index: 6;
+    }
     .polaroid {
       padding: 20px;
       padding-bottom: 0;
       box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
       -webkit-backface-visibility: hidden;
       background: white;
+      height: 280px;
+      width: 280px;
       .image {
         margin-bottom: 20px;
-        height: 210px;
-        width: 260px;
-        background: url(/images/slide1.jpg);
+        height: calc(100% - 50px);
+        width: calc(100%);
         background-size: cover;
+        background-repeat: no-repeat;
+      }
+      &.expanded {
+        position: fixed;
+        z-index: 6;
       }
       .description {
         font-size: 15px;
@@ -223,6 +232,16 @@ header {
       }
     }
   }
+}
+#gallery-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(68, 59, 59, 0.4);
+  display: none;
+  z-index: 5;
 }
 #flash-message {
   position: fixed;

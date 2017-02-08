@@ -73,12 +73,140 @@
   }
   var $ = window.$;
   // Your custom JavaScript goes here
+
+  var currentAnimatedIndex = -1;
+  var totalMainImages = 0;
+  var animating = false;
+
+  var resetPolaroid = function() {
+    var polaroid = $('.polaroid.expanded');
+    polaroid.removeClass('expanded')
+      .css({
+        transform: 'rotate(' + polaroid.data('degrees') + ')',
+        height: 280,
+        width: 280
+      });
+  };
+
+  var animatePolaroidFromRight = function(polaroid) {
+    if (animating) {
+      return;
+    }
+    animating = true;
+    var windowElement = $(window);
+    var windowTop = windowElement.scrollTop();
+    var vh = windowElement.height();
+    var vw = windowElement.width();
+    var leftPadding = 100;
+    var topPadding = 50;
+    var pw = vw - 2 * leftPadding;
+    var ph = vh - 2 * topPadding;
+    var top = polaroid.offset().top - windowTop;
+    var degrees = polaroid.data('degrees');
+
+    resetPolaroid();
+    currentAnimatedIndex = Number(polaroid.data('index'));
+    var iheight = Number(polaroid.data('iheight'));
+    var iwidth = Number(polaroid.data('iwidth'));
+    ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
+    topPadding = (vh - ph) / 2;
+    polaroid.addClass('expanded');
+    polaroid.css({top: top,
+                  right: 0,
+                  transform: 'rotate(' + degrees + ')'})
+            .transition({top: topPadding,
+              right: leftPadding,
+              height: ph,
+              width: pw,
+              rotate: 360}, function() {
+                animating = false;
+              });
+  };
+
+  var animatePolaroidFromLeft = function(polaroid) {
+    if (animating) {
+      return;
+    }
+    animating = true;
+    var windowElement = $(window);
+    var windowTop = windowElement.scrollTop();
+    var vh = windowElement.height();
+    var vw = windowElement.width();
+    var leftPadding = 100;
+    var topPadding = 50;
+    var pw = vw - 2 * leftPadding;
+    var ph = vh - 2 * topPadding;
+    var top = polaroid.offset().top - windowTop;
+    var degrees = polaroid.data('degrees');
+    currentAnimatedIndex = Number(polaroid.data('index'));
+    var iheight = polaroid.data('iheight');
+    var iwidth = polaroid.data('iwidth');
+    ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
+    topPadding = (vh - ph) / 2;
+
+    polaroid.css({position: 'fixed',
+                  top: top,
+                  right: 0,
+                  transform: 'rotate(' + degrees + ')'})
+            .transition({top: topPadding,
+              right: leftPadding,
+              height: ph,
+              width: pw,
+              rotate: -360}, function() {
+                animating = true;
+                polaroid.addClass('expanded');
+              });
+  };
+
+  var previousImage = function() {
+    if (!animating) {
+      var index = currentAnimatedIndex === 0 ?
+                    totalMainImages : (currentAnimatedIndex - 1);
+      var polaroid = $('#main-polaroid-' + index);
+
+      resetPolaroid();
+      animatePolaroidFromLeft(polaroid);
+    }
+  };
+
+  var nextImage = function() {
+    if (!animating) {
+      var index = currentAnimatedIndex === 0 ?
+                    totalMainImages : (currentAnimatedIndex - 1);
+      var polaroid = $('#main-polaroid-' + index);
+
+      resetPolaroid();
+
+      animatePolaroidFromLeft(polaroid);
+    }
+  };
+
+  var startGallery = function(polaroid) {
+    $('header').hide();
+    $('#gallery-overlay').show();
+    $('#polaroid-gallery').addClass('gallery');
+    animatePolaroidFromRight(polaroid);
+  };
+
+  var stopGallery = function() {
+    resetPolaroid();
+    $('header').show();
+    $('#gallery-overlay').hide();
+    $('#polaroid-gallery').removeClass('gallery');
+  };
+
   var loadImagesJson = function() {
     $.getJSON('/images.json', function(data) {
       var mainImages = data.main;
+      totalMainImages = mainImages.length;
       var polaroidGalleryElement = $('#polaroid-gallery');
+      polaroidGalleryElement.on('click', '.polaroid', function() {
+        var polaroid = $(this);
+        startGallery(polaroid);
+      });
       mainImages.forEach(function(polaroid, index) {
-        var polaroidElement = $('<div class="polaroid">' +
+        var polaroidElement = $('<div class="polaroid" id="main-polaroid-' +
+                                  index + '">' +
                                   '<div class="image"></div>' +
                                   '<div class="description">' +
                                   polaroid.description +
@@ -87,10 +215,18 @@
         var sign = index % 2 ? '-' : '';
         var degrees = sign + Math.floor(Math.random() * (10) + 15) + 'deg';
         polaroidElement.data('degrees', degrees);
+        polaroidElement.data('index', index);
         polaroidElement.css('transform', 'rotate(' + degrees + ')');
         polaroidElement.find('.image')
                        .css('background-image', 'url(' + polaroid.url + ')');
         polaroidGalleryElement.append(polaroidElement);
+        var image = new Image();
+        image.name = polaroid.url;
+        image.src = polaroid.url;
+        image.onload = function() {
+          polaroidElement.data('iheight', this.height);
+          polaroidElement.data('iwidth', this.width);
+        };
       });
     });
   };
@@ -105,7 +241,10 @@
     });
 
     loadImagesJson();
-
+    $('#gallery-overlay').on('click', function(event) {
+      stopGallery();
+      event.stopPropagation();
+    });
     /* Adding smoothness to scroll on navigation click */
     $('body').smoothScroll({
       offset: -40,
