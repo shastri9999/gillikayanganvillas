@@ -138,14 +138,35 @@ header {
   }
   #accomodation {
     padding-left: 40px;
-    max-width: $max-content-width;
+    margin-top: 20px;
+    max-width: calc(100vw - 40px);
     .rooms {
-      img {
-        width: 50%;
+      .room {
+        display: flex;
+        flex-direction: row;
+        box-shadow: 1px 1px 4px #ccc;
+        padding: 20px;
+        height: 300px;
+        padding-right: 260px;
+        overflow: hidden;
+        img {
+          width : 300px;
+        }
+        .room-description {
+          padding: 30px;
+          h2 {
+            font-size: 24px;
+          }
+          .size {
+            padding: 20px;
+            font-size: 18px;
+          }
+        }
       }
     }
   }
   #threesixty{
+    margin-top: 30px;
     padding-left: 40px;
     max-width: $max-content-width;
     img {
