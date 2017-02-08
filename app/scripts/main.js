@@ -206,51 +206,63 @@
     $('#polaroid-gallery').removeClass('gallery');
     currentAnimatedIndex = -1;
   };
+  var imagesData = {};
+  var imagesDataLoaded = false;
 
-  var loadImagesJson = function() {
-    $.getJSON('/images.json', function(data) {
-      var mainImages = data.main;
-      totalMainImages = mainImages.length;
-      var polaroidGalleryElement = $('#polaroid-gallery');
-      polaroidGalleryElement.on('click', '.polaroid', function() {
-        var polaroid = $(this);
-        startGallery(polaroid);
-      });
-      mainImages.forEach(function(polaroid, index) {
-        var polaroidElement = $('<div class="polaroid" id="main-polaroid-' +
-                                  index + '">' +
-                                  '<div class="image"></div>' +
-                                  '<div class="description">' +
-                                  polaroid.description +
-                                  '</div>' +
-                                '</div>');
-        var sign = Math.random() <= 0.5 ? '-' : '';
-        var xsign = Math.random() <= 0.5 ? '-' : '';
-        var ysign = Math.random() <= 0.5 ? '-' : '';
-        var tx = xsign + Math.floor(Math.random() * (85)) + 'px';
-        var ty = ysign + Math.floor(Math.random() * (85)) + 'px';
-        var degrees = sign + Math.floor(Math.random() * (5) + 25) + 'deg';
-        if (index === 0) {
-          tx = ty = '0px';
-        }
-        polaroidElement.data('degrees', degrees);
-        polaroidElement.data('tx', tx);
-        polaroidElement.data('ty', ty);
-        polaroidElement.data('index', index);
-        polaroidElement.css('transform', 'rotate(' + degrees + ')' +
-                                         'translate(' + tx + ',' + ty + ')');
-        polaroidElement.find('.image')
-                       .css('background-image', 'url(' + polaroid.url + ')');
-        polaroidGalleryElement.append(polaroidElement);
-        var image = new Image();
-        image.name = polaroid.url;
-        image.src = polaroid.url;
-        image.onload = function() {
-          polaroidElement.data('iheight', this.height);
-          polaroidElement.data('iwidth', this.width);
-        };
-      });
+  var loadPolaroid = function(polaroidGallerySelector, prefix, images) {
+    var mainImages = images;
+    totalMainImages = mainImages.length;
+    var polaroidGalleryElement = $(polaroidGallerySelector);
+    polaroidGalleryElement.on('click', '.polaroid', function() {
+      var polaroid = $(this);
+      startGallery(polaroid);
     });
+    mainImages.forEach(function(polaroid, index) {
+      var polaroidElement = $('<div class="polaroid" id="' + prefix +
+                                '-polaroid-' + index + '">' +
+                                '<div class="image"></div>' +
+                                '<div class="description">' +
+                                polaroid.description +
+                                '</div>' +
+                              '</div>');
+      var sign = Math.random() <= 0.5 ? '-' : '';
+      var xsign = Math.random() <= 0.5 ? '-' : '';
+      var ysign = Math.random() <= 0.5 ? '-' : '';
+      var tx = xsign + Math.floor(Math.random() * (85)) + 'px';
+      var ty = ysign + Math.floor(Math.random() * (85)) + 'px';
+      var degrees = sign + Math.floor(Math.random() * (5) + 25) + 'deg';
+      if (index === 0) {
+        tx = ty = '0px';
+      }
+      polaroidElement.data('degrees', degrees);
+      polaroidElement.data('tx', tx);
+      polaroidElement.data('ty', ty);
+      polaroidElement.data('index', index);
+      polaroidElement.css('transform', 'rotate(' + degrees + ')' +
+                                       'translate(' + tx + ',' + ty + ')');
+      polaroidElement.find('.image')
+                     .css('background-image', 'url(' + polaroid.url + ')');
+      polaroidGalleryElement.append(polaroidElement);
+      var image = new Image();
+      image.name = polaroid.url;
+      image.src = polaroid.url;
+      image.onload = function() {
+        polaroidElement.data('iheight', this.height);
+        polaroidElement.data('iwidth', this.width);
+      };
+    });
+  };
+
+  var loadImages = function(gallerySelector, prefix) {
+    if (imagesDataLoaded) {
+      loadPolaroid(gallerySelector, prefix, imagesData[prefix]);
+    } else {
+      $.getJSON('/images.json', function(data) {
+        imagesData = data;
+        imagesDataLoaded = true;
+        loadPolaroid(gallerySelector, prefix, imagesData[prefix]);
+      });
+    }
   };
 
   $(document).ready(function() {
@@ -262,7 +274,7 @@
       loop: true
     });
 
-    loadImagesJson();
+    loadImages('#polaroid-gallery', 'main');
     $('#gallery-overlay').on('click', function(event) {
       stopGallery();
       event.stopPropagation();
