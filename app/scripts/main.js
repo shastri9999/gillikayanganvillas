@@ -76,20 +76,27 @@
 
   var currentAnimatedIndex = -1;
   var totalMainImages = 0;
+  console.log(currentAnimatedIndex, totalMainImages);
   var animating = false;
 
   var resetPolaroid = function() {
     var polaroid = $('.polaroid.expanded');
+    var degrees = polaroid.data('degrees');
+    var tx = polaroid.data('tx');
+    var ty = polaroid.data('ty');
     polaroid.removeClass('expanded')
       .css({
-        transform: 'rotate(' + polaroid.data('degrees') + ')',
         height: 280,
         width: 280
       });
+    polaroid.css('transform', 'rotate(' + degrees + ')' +
+                                       'translate(' + tx + ',' + ty + ')');
   };
 
   var animatePolaroidFromRight = function(polaroid) {
-    if (animating) {
+    var polaroidIndex = polaroid.data('index');
+
+    if (animating || polaroidIndex === currentAnimatedIndex) {
       return;
     }
     animating = true;
@@ -103,7 +110,6 @@
     var ph = vh - 2 * topPadding;
     var top = polaroid.offset().top - windowTop;
     var degrees = polaroid.data('degrees');
-
     resetPolaroid();
     currentAnimatedIndex = Number(polaroid.data('index'));
     var iheight = Number(polaroid.data('iheight'));
@@ -123,63 +129,63 @@
               });
   };
 
-  var animatePolaroidFromLeft = function(polaroid) {
-    if (animating) {
-      return;
-    }
-    animating = true;
-    var windowElement = $(window);
-    var windowTop = windowElement.scrollTop();
-    var vh = windowElement.height();
-    var vw = windowElement.width();
-    var leftPadding = 100;
-    var topPadding = 50;
-    var pw = vw - 2 * leftPadding;
-    var ph = vh - 2 * topPadding;
-    var top = polaroid.offset().top - windowTop;
-    var degrees = polaroid.data('degrees');
-    currentAnimatedIndex = Number(polaroid.data('index'));
-    var iheight = polaroid.data('iheight');
-    var iwidth = polaroid.data('iwidth');
-    ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
-    topPadding = (vh - ph) / 2;
-
-    polaroid.css({position: 'fixed',
-                  top: top,
-                  right: 0,
-                  transform: 'rotate(' + degrees + ')'})
-            .transition({top: topPadding,
-              right: leftPadding,
-              height: ph,
-              width: pw,
-              rotate: -360}, function() {
-                animating = true;
-                polaroid.addClass('expanded');
-              });
-  };
-
-  var previousImage = function() {
-    if (!animating) {
-      var index = currentAnimatedIndex === 0 ?
-                    totalMainImages : (currentAnimatedIndex - 1);
-      var polaroid = $('#main-polaroid-' + index);
-
-      resetPolaroid();
-      animatePolaroidFromLeft(polaroid);
-    }
-  };
-
-  var nextImage = function() {
-    if (!animating) {
-      var index = currentAnimatedIndex === 0 ?
-                    totalMainImages : (currentAnimatedIndex - 1);
-      var polaroid = $('#main-polaroid-' + index);
-
-      resetPolaroid();
-
-      animatePolaroidFromLeft(polaroid);
-    }
-  };
+  // var animatePolaroidFromLeft = function(polaroid) {
+  //   if (animating) {
+  //     return;
+  //   }
+  //   animating = true;
+  //   var windowElement = $(window);
+  //   var windowTop = windowElement.scrollTop();
+  //   var vh = windowElement.height();
+  //   var vw = windowElement.width();
+  //   var leftPadding = 100;
+  //   var topPadding = 50;
+  //   var pw = vw - 2 * leftPadding;
+  //   var ph = vh - 2 * topPadding;
+  //   var top = polaroid.offset().top - windowTop;
+  //   var degrees = polaroid.data('degrees');
+  //   currentAnimatedIndex = Number(polaroid.data('index'));
+  //   var iheight = polaroid.data('iheight');
+  //   var iwidth = polaroid.data('iwidth');
+  //   ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
+  //   topPadding = (vh - ph) / 2;
+  //
+  //   polaroid.css({position: 'fixed',
+  //                 top: top,
+  //                 right: 0,
+  //                 transform: 'rotate(' + degrees + ')'})
+  //           .transition({top: topPadding,
+  //             right: leftPadding,
+  //             height: ph,
+  //             width: pw,
+  //             rotate: -360}, function() {
+  //               animating = true;
+  //               polaroid.addClass('expanded');
+  //             });
+  // };
+  //
+  // var previousImage = function() {
+  //   if (!animating) {
+  //     var index = currentAnimatedIndex === 0 ?
+  //                   totalMainImages : (currentAnimatedIndex - 1);
+  //     var polaroid = $('#main-polaroid-' + index);
+  //
+  //     resetPolaroid();
+  //     animatePolaroidFromLeft(polaroid);
+  //   }
+  // };
+  //
+  // var nextImage = function() {
+  //   if (!animating) {
+  //     var index = currentAnimatedIndex === 0 ?
+  //                   totalMainImages : (currentAnimatedIndex - 1);
+  //     var polaroid = $('#main-polaroid-' + index);
+  //
+  //     resetPolaroid();
+  //
+  //     animatePolaroidFromLeft(polaroid);
+  //   }
+  // };
 
   var startGallery = function(polaroid) {
     $('header').hide();
@@ -193,6 +199,7 @@
     $('header').show();
     $('#gallery-overlay').hide();
     $('#polaroid-gallery').removeClass('gallery');
+    currentAnimatedIndex = -1;
   };
 
   var loadImagesJson = function() {
@@ -212,11 +219,21 @@
                                   polaroid.description +
                                   '</div>' +
                                 '</div>');
-        var sign = index % 2 ? '-' : '';
-        var degrees = sign + Math.floor(Math.random() * (10) + 15) + 'deg';
+        var sign = Math.random() <= 0.5 ? '-' : '';
+        var xsign = Math.random() <= 0.5 ? '-' : '';
+        var ysign = Math.random() <= 0.5 ? '-' : '';
+        var tx = xsign + Math.floor(Math.random() * (85)) + 'px';
+        var ty = ysign + Math.floor(Math.random() * (85)) + 'px';
+        var degrees = sign + Math.floor(Math.random() * (5) + 25) + 'deg';
+        if (index === 0) {
+          tx = ty = '0px';
+        }
         polaroidElement.data('degrees', degrees);
+        polaroidElement.data('tx', tx);
+        polaroidElement.data('ty', ty);
         polaroidElement.data('index', index);
-        polaroidElement.css('transform', 'rotate(' + degrees + ')');
+        polaroidElement.css('transform', 'rotate(' + degrees + ')' +
+                                         'translate(' + tx + ',' + ty + ')');
         polaroidElement.find('.image')
                        .css('background-image', 'url(' + polaroid.url + ')');
         polaroidGalleryElement.append(polaroidElement);
