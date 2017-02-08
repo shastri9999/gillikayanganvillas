@@ -247,9 +247,45 @@ header {
   top: 0;
   right: 0;
   bottom: 0;
-  background: rgba(68, 59, 59, 0.4);
+  background: rgba(68, 59, 59, 0.9);
   display: none;
   z-index: 5;
+}
+#next {
+  background: #ece6e6;
+  height: 80px;
+  width: 80px;
+  top: 50%;
+  position: fixed;
+  z-index: 7;
+  right: -40px;
+  border-radius: 100%;
+  cursor: pointer;
+  display: none;
+  span {
+    position: absolute;
+    left: 18px;
+    font-size: 40px;
+    top: 9px;
+  }
+}
+#previous {
+  background: #ece6e6;
+  height: 80px;
+  width: 80px;
+  top: 50%;
+  position: fixed;
+  z-index: 7;
+  left: -40px;
+  border-radius: 100%;
+  cursor: pointer;
+  display: none;
+  span {
+    position: absolute;
+    right: 18px;
+    font-size: 40px;
+    top: 7px;
+  }
 }
 #flash-message {
   position: fixed;
