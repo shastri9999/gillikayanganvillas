@@ -198,28 +198,54 @@
 
   var startGallery = function(polaroid) {
     $('header').hide();
-    $('#gallery-overlay').show();
     $('#next').show();
     $('#previous').show();
-    $('#polaroid-gallery').addClass('gallery');
-    currentPrefix = 'main';
+    currentPrefix = polaroid.data('prefix');
+    if (currentPrefix === 'main') {
+      $('#gallery-overlay').show();
+      $('#polaroid-gallery').addClass('gallery');
+    } else {
+      $('#' + currentPrefix + '-polaroid-gallery').addClass('gallery');
+      $('.room.' + currentPrefix).addClass('expanded').css({
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      });
+    }
     animatePolaroidFromRight(polaroid);
   };
-
   var stopGallery = function() {
     resetPolaroid();
     $('header').show();
-    $('#gallery-overlay').hide();
     $('#next').hide();
     $('#previous').hide();
-    $('#polaroid-gallery').removeClass('gallery');
+    if (currentPrefix === 'main') {
+      $('#gallery-overlay').hide();
+      $('#polaroid-gallery').removeClass('gallery');
+    } else {
+      $('.room.' + currentPrefix).removeClass('expanded').css({
+        position: 'relative',
+        top: 'auto',
+        left: 'auto',
+        bottom: 'auto',
+        right: 0
+      });
+    }
     currentAnimatedIndex = -1;
+    currentPrefix = 'none';
   };
+
+  $('.rooms').on('click', '.room.expanded', function() {
+    stopGallery();
+  });
 
   var loadPolaroid = function(polaroidGallerySelector, prefix, images) {
     var polaroidGalleryElement = $(polaroidGallerySelector);
-    polaroidGalleryElement.on('click', '.polaroid', function() {
+    polaroidGalleryElement.on('click', '.polaroid', function(event) {
       var polaroid = $(this);
+      event.stopPropagation();
       startGallery(polaroid);
     });
     images.forEach(function(polaroid, index) {
@@ -230,19 +256,41 @@
                                 polaroid.description +
                                 '</div>' +
                               '</div>');
+      var mainVariations = {
+        degrees: [15, 30],
+        height: [180, 280],
+        tx: 75,
+        ty: 75
+      };
+      var roomVariations = {
+        degrees: [15, 30],
+        height: [100, 150],
+        tx: 35,
+        ty: 35
+      };
+      var variations = prefix === 'main' ? mainVariations : roomVariations;
       var sign = index % 2 ? '-' : '';
       var xsign = Math.random() <= 0.5 ? '-' : '';
       var ysign = Math.random() <= 0.5 ? '-' : '';
-      var height = Math.floor(Math.random() * (100) + 180);
+      var height = Math.floor(Math.random() *
+                    (variations.height[1] - variations.height[0]) +
+                    variations.height[0]);
       var width = height;
-      var tx = xsign + Math.floor(Math.random() * (75 * width / 280)) + 'px';
-      var ty = ysign + Math.floor(Math.random() * (75 * height / 280)) + 'px';
-      var degrees = sign + Math.floor(Math.random() * (5) + 25) + 'deg';
+      var tx = xsign + Math.floor(Math.random() *
+          (variations.tx * width /
+            (variations.height[0] + variations.height[1]))) + 'px';
+      var ty = ysign + Math.floor(Math.random() *
+          (variations.ty * width /
+            (variations.height[0] + variations.height[1]))) + 'px';
+      var degrees = sign + Math.floor(Math.random() *
+          (variations.degrees[1] - variations.degrees[0]) +
+          variations.degrees[0]) + 'deg';
       if (index === 0) {
         tx = ty = '0px';
       }
       width += 'px';
       height += 'px';
+      polaroidElement.data('prefix', prefix);
       polaroidElement.data('degrees', degrees);
       polaroidElement.data('tx', tx);
       polaroidElement.data('ty', ty);
@@ -290,6 +338,10 @@
     });
 
     loadImages('#polaroid-gallery', 'main');
+    loadImages('#single-polaroid-gallery', 'single');
+    loadImages('#double-polaroid-gallery', 'double');
+    loadImages('#triple-polaroid-gallery', 'triple');
+
     $('#gallery-overlay').on('click', function(event) {
       stopGallery();
       event.stopPropagation();
@@ -305,7 +357,9 @@
       $('#polaroid-gallery').hide();
     });
     $('.rooms').mouseleave(function() {
-      $('#polaroid-gallery').show();
+      if (currentPrefix === 'none') {
+        $('#polaroid-gallery').show();
+      }
     });
 
     /* Adding smoothness to scroll on navigation click */
