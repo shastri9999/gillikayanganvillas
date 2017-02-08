@@ -90,10 +90,13 @@
     var degrees = polaroid.data('degrees');
     var tx = polaroid.data('tx');
     var ty = polaroid.data('ty');
+    var height = polaroid.data('height');
+    var width = polaroid.data('width');
+
     polaroid.removeClass('expanded')
       .css({
-        height: 280,
-        width: 280,
+        height: height,
+        width: width,
         top: 'auto',
         left: 'auto',
         bottom: 'auto',
@@ -225,21 +228,31 @@
                                 polaroid.description +
                                 '</div>' +
                               '</div>');
-      var sign = Math.random() <= 0.5 ? '-' : '';
+      var sign = index % 2 ? '-' : '';
       var xsign = Math.random() <= 0.5 ? '-' : '';
       var ysign = Math.random() <= 0.5 ? '-' : '';
-      var tx = xsign + Math.floor(Math.random() * (85)) + 'px';
-      var ty = ysign + Math.floor(Math.random() * (85)) + 'px';
+      var height = Math.floor(Math.random() * (100) + 180);
+      var width = height;
+      var tx = xsign + Math.floor(Math.random() * (75 * width / 280)) + 'px';
+      var ty = ysign + Math.floor(Math.random() * (75 * height / 280)) + 'px';
       var degrees = sign + Math.floor(Math.random() * (5) + 25) + 'deg';
       if (index === 0) {
         tx = ty = '0px';
       }
+      width += 'px';
+      height += 'px';
       polaroidElement.data('degrees', degrees);
       polaroidElement.data('tx', tx);
       polaroidElement.data('ty', ty);
       polaroidElement.data('index', index);
-      polaroidElement.css('transform', 'rotate(' + degrees + ')' +
-                                       'translate(' + tx + ',' + ty + ')');
+      polaroidElement.data('height', height);
+      polaroidElement.data('width', width);
+      polaroidElement.css({
+        height: height,
+        width: width,
+        transform: 'rotate(' + degrees + ')' +
+                                         'translate(' + tx + ',' + ty + ')'
+      });
       polaroidElement.find('.image')
                      .css('background-image', 'url(' + polaroid.url + ')');
       polaroidGalleryElement.append(polaroidElement);
