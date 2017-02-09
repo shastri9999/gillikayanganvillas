@@ -249,7 +249,8 @@
       startGallery(polaroid);
     });
     images.forEach(function(polaroid, index) {
-      var polaroidElement = $('<div class="polaroid" id="' + prefix +
+      var polaroidElement = $('<div title="click-me" class="polaroid" id="' +
+                                prefix +
                                 '-polaroid-' + index + '">' +
                                 '<div class="image"></div>' +
                                 '<div class="description">' +
