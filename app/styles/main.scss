@@ -152,22 +152,29 @@ header {
         position: relative;
         height: 300px;
         width: 100%;
-        box-shadow: -1px -2px 6px rgba(66, 61, 13, 0.11);
+        .room-description {
+          display: none;
+        }
         &:hover {
           height: 750px;
+          width: calc(100vw - 80px);
+          .room-description {
+            display: block;
+          }
         }
         &.expanded {
           height: auto;
+          width: 100%;
           z-index: 5;
-          .ammenities {
-            display: block !important;
-          }
+          background-color: #fff;
           .room-overlay {
+            .room-description {
+              display: block;
+            }
             .gallery {
               display: flex;
               flex-flow: row wrap;
             }
-            background-color: #feec44;
             top: -10px;
             left: -10px;
             bottom: -10px;
@@ -198,10 +205,12 @@ header {
         .gallery {
           position: absolute;
           right: 0;
-          width: 300px;
           top: 150px;
           bottom: 0;
           display: none;
+          &.single {
+            width: 500px;
+          }
           &.double {
             top: 180px;
           }
@@ -228,27 +237,20 @@ header {
         transform-origin: center center;
         display: flex;
         flex-direction: row;
-        box-shadow: 1px 1px 4px #ccc;
         padding: 30px;
         padding-right: 260px;
         overflow: hidden;
         cursor: pointer;
         position: absolute;
-        background-color: #cee0f4;
-        color: #a7a39a;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         &:hover {
-          .ammenities {
-            display: block !important;
-          }
           .gallery {
             display: flex;
             flex-flow: row wrap;
           }
-          background-color: #feec44;
           top: -10px;
           left: -10px;
           bottom: -10px;
@@ -274,6 +276,7 @@ header {
           }
         }
         .room-description {
+          max-width: calc(100%  - 400px);
           h2 {
             font-size: 24px;
           }
@@ -284,7 +287,6 @@ header {
           .ammenities {
             font-size: 15px;
             margin: 0;
-            display: none;
           }
         }
       }
@@ -414,8 +416,8 @@ header {
   #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
     position: absolute;
     right: 0;
-    width: 300px;
-    padding-top: 50px;
+    width: 400px;
+    padding-top: 0;
     top: 0;
     bottom: 0;
     z-index: 1;
@@ -424,7 +426,7 @@ header {
       z-index: 6;
     }
     .polaroid {
-      padding: 10px;
+      padding: 3px;
       padding-bottom: 0;
       box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
       -webkit-backface-visibility: hidden;

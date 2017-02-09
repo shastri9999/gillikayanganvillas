@@ -266,8 +266,8 @@
       };
       var roomVariations = {
         degrees: [15, 30],
-        height: [100, 150],
-        width: [100, 150],
+        height: [140, 180],
+        width: [180, 220],
         tx: 35,
         ty: 35
       };
