@@ -258,11 +258,11 @@
                               '</div>');
       var vw = $(window).width();
       var mainVariations = {
-        degrees: [15, 30],
-        height: [0.25 * vw, 0.30 * vw],
-        width: [0.25 * vw, 0.30 * vw],
-        tx: 35,
-        ty: 105
+        degrees: [3, 40],
+        height: [0.15 * vw, 0.30 * vw],
+        width: [0.15 * vw, 0.30 * vw],
+        tx: 10,
+        ty: 125
       };
       var roomVariations = {
         degrees: [15, 30],
@@ -272,7 +272,7 @@
         ty: 35
       };
       var variations = prefix === 'main' ? mainVariations : roomVariations;
-      var sign = index % 2 ? '-' : '';
+      var sign = Math.random() <= 0.5 ? '-' : '';
       var xsign = Math.random() <= 0.5 ? '-' : '';
       var ysign = Math.random() <= 0.85 ? '-' : '';
       var height = Math.floor(Math.random() *

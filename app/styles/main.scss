@@ -424,6 +424,7 @@ header {
     transform-origin: top right;
     &.gallery{
       z-index: 6;
+      width: 420px;
     }
     .polaroid {
       padding: 3px;
