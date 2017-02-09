@@ -65,9 +65,16 @@ header {
           height: 50vh;
         }
         .main-description {
-          text-shadow: 1px 1px 2px black;
+          position: relative;
+          top: -5vh;
+          max-width: 400px;
           img {
-            height: 20vh;
+            height: 15vh;
+          }
+          div {
+            position: relative;
+            top: -5vh;
+            left: 40px;
           }
         }
       }
