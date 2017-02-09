@@ -83,7 +83,7 @@
   var imagesData = {};
   var imagesDataLoaded = false;
   var animating = false;
-  var currentPrefix = 'main';
+  var currentPrefix = 'none';
 
   var resetPolaroid = function() {
     var polaroid = $('.polaroid.expanded');
@@ -256,31 +256,36 @@
                                 polaroid.description +
                                 '</div>' +
                               '</div>');
+      var vw = $(window).width();
       var mainVariations = {
         degrees: [15, 30],
-        height: [180, 280],
-        tx: 75,
-        ty: 75
+        height: [0.25 * vw, 0.30 * vw],
+        width: [0.25 * vw, 0.30 * vw],
+        tx: 35,
+        ty: 105
       };
       var roomVariations = {
         degrees: [15, 30],
         height: [100, 150],
+        width: [100, 150],
         tx: 35,
         ty: 35
       };
       var variations = prefix === 'main' ? mainVariations : roomVariations;
       var sign = index % 2 ? '-' : '';
       var xsign = Math.random() <= 0.5 ? '-' : '';
-      var ysign = Math.random() <= 0.5 ? '-' : '';
+      var ysign = Math.random() <= 0.85 ? '-' : '';
       var height = Math.floor(Math.random() *
                     (variations.height[1] - variations.height[0]) +
                     variations.height[0]);
-      var width = height;
+      var width = Math.floor(Math.random() *
+                    (variations.width[1] - variations.width[0]) +
+                    variations.width[0]);
       var tx = xsign + Math.floor(Math.random() *
           (variations.tx * width /
-            (variations.height[0] + variations.height[1]))) + 'px';
+            (variations.width[0] + variations.width[1]))) + 'px';
       var ty = ysign + Math.floor(Math.random() *
-          (variations.ty * width /
+          (variations.ty * height /
             (variations.height[0] + variations.height[1]))) + 'px';
       var degrees = sign + Math.floor(Math.random() *
           (variations.degrees[1] - variations.degrees[0]) +

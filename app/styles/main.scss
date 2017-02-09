@@ -1,4 +1,4 @@
-$max-content-width: calc(100vw - 400px);
+$max-content-width: 65vw;
 html, body {
   font-family: 'La Belle Aurore', cursive;
   margin: 0;
@@ -124,10 +124,10 @@ header {
   background-color: #fff;
   position: relative;
   overflow: hidden;
-  padding-top: 50px;
-  margin-top: -50px;
+  padding-top: 150px;
+  margin-top: -150px;
   &.fixed {
-    padding-top: 90px;
+    padding-top: 110px;
   }
   #location {
     padding-left: 40px;
@@ -146,7 +146,7 @@ header {
   #accomodation {
     padding-left: 40px;
     margin-top: 20px;
-    max-width: calc(100vw - 40px);
+    max-width: $max-content-width;
     .rooms {
       .room {
         position: relative;
@@ -295,7 +295,7 @@ header {
     padding-left: 40px;
     max-width: $max-content-width;
     img {
-      width: 100%;
+      width: 92%;
     }
   }
   #sayhello {
@@ -370,11 +370,12 @@ header {
       }
     }
   }
-  #polaroid-gallery, #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
+  #polaroid-gallery {
     position: absolute;
     right: 0;
-    width: 300px;
-    padding-top: 50px;
+    width: 35vw;
+    padding-top: 72px;
+    padding-left: 5vw;
     top: 0;
     bottom: 0;
     z-index: 1;
@@ -383,14 +384,14 @@ header {
       z-index: 6;
     }
     .polaroid {
-      padding: 20px;
+      padding: 5px;
       padding-bottom: 0;
       box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
       -webkit-backface-visibility: hidden;
       background: white;
       .image {
         margin-bottom: 20px;
-        height: calc(100% - 50px);
+        height: calc(100% - 40px);
         width: calc(100%);
         background-size: cover;
         background-repeat: no-repeat;
@@ -405,6 +406,8 @@ header {
         text-overflow: ellipsis;
         overflow: hidden;
         text-align: center;
+        position: relative;
+        top: -18px;
       }
     }
   }
