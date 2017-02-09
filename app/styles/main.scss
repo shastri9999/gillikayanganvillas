@@ -209,7 +209,7 @@ header {
                 height: 200px;
                 left: calc(100% - 235px);
               }
-              transform: rotate(360deg);
+              transform: rotate(180deg);
               top:10px;
             }
           }
@@ -270,7 +270,6 @@ header {
         flex-direction: row;
         padding: 30px;
         padding-right: 260px;
-        overflow: hidden;
         cursor: pointer;
         position: absolute;
         top: 0;
@@ -291,11 +290,11 @@ header {
           &>img {
             transition: all 0.8s ease-in-out;
             &.full {
-              transition: all 0.1s ease-in-out;              
+              transition: all 0.1s ease-in-out;
             }
             height: 200px;
             left: calc(100% - 410px);
-            transform: rotate(360deg);
+            transform: rotate(180deg);
             top:10px;
 
             &.single {

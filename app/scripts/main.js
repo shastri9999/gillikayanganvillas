@@ -136,7 +136,7 @@
               height: ph,
               width: pw,
               duration: 1000,
-              rotate: -360}, function() {
+              rotate: 0}, function() {
                 animating = false;
               });
   };
@@ -168,7 +168,7 @@
               height: ph,
               width: pw,
               duration: 1000,
-              rotate: 360}, function() {
+              rotate: 0}, function() {
                 animating = false;
               });
   };
