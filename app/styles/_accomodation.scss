@@ -1,0 +1,194 @@
+@import "variables";
+#accomodation {
+  padding-left: 20px;
+  margin-top: 20px;
+  max-width: $max-content-width;
+  .rooms {
+    width: 415px;
+    .room {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      &.triple {
+        height: 298px;
+        width: 410px;
+      }
+      &.double {
+        height: 540px;
+        width: 410px;
+      }
+      &.single {
+        height: 252px;
+        width: 410px;
+      }
+      .room-description {
+        display: none;
+        width: 40vw;
+      }
+      &:hover {
+        height: 800px;
+        width: calc(100vw - 80px);
+        .room-description {
+          display: block;
+        }
+      }
+      &.expanded {
+        height: auto;
+        width: 100%;
+        z-index: 5;
+        background-color: rgba(0,0,0,0.8);
+        .room-overlay {
+          z-index: 2;
+          .room-description {
+            display: none;
+          }
+          .gallery {
+            display: flex;
+            flex-flow: row wrap;
+            right: 0 !important;
+            width: 80vw !important;
+            bottom: 20px !important;
+            top: auto;
+            .polaroid
+            {
+              opacity: 0;
+              &.expanded {
+                opacity: 1;
+              }
+            }
+          }
+          &>img {
+            display: none !important;
+          }
+        }
+      }
+    }
+    .room-overlay {
+      transform-origin: center center;
+      display: flex;
+      flex-direction: row;
+      padding: 30px;
+      padding-right: 260px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      .gallery {
+        position: absolute;
+        right: 30px;
+        height: 500px;
+        display: none;
+        top: 100px;
+      }
+      &>img{
+        position: absolute;
+        &.single {
+          left: 170px;
+          top: 5px;
+          height: 67px;
+          &.full {
+            opacity: 1;
+            left: 0;
+            top: 0;
+            height: 252px;
+          }
+        }
+        &.double {
+          left: 0;
+          top: 0;
+          height: 182px;
+          &.full {
+            opacity: 1;
+            height: 540px;
+            top: 0;
+            left: 0;
+          }
+        }
+        &.triple {
+          height: 298px;
+          top: 0;
+          left: 0;
+          &.full {
+            opacity: 1;
+          }
+        }
+      }
+      &:hover {
+        transition: all 0.5s ease-in-out;
+        top: -10px;
+        left: -10px;
+        bottom: -10px;
+        right: -10px;
+        z-index: 2;
+        .gallery {
+          display: flex;
+          flex-flow: row wrap;
+        }
+        &>img {
+          transition: all 0.8s ease-in-out;
+          &.full {
+            transition: all 0.1s ease-in-out;
+          }
+          height: 200px;
+          top:150px;
+          &.single {
+            height: 100px;
+            display: block;
+            right: 600px;
+            left: auto;
+            top: 160px;
+            &.full {
+              opacity: 0;
+              transform: none;
+              left: 0;
+              top: 0;
+              height: 295px;
+            }
+          }
+          &.double {
+            height: 150px;
+            display: block;
+            left: auto;
+            right: 600px;
+            &.full {
+              display: none;
+              transform: none;
+              height: 633px;
+              top: 0;
+              left: 0;
+            }
+          }
+          &.triple {
+            height: 270px;
+            display: block;
+            left: auto;
+            right: 600px;
+            top: 135px;
+            &.full {
+              opacity: 0;
+              transform: none;
+              height: 350px;
+              top: 0;
+              left: 0;
+            }
+          }
+        }
+      }
+      .room-description {
+        max-width: calc(100%  - 400px);
+        h2 {
+          font-size: 1em;
+        }
+        .size {
+          font-size: 0.66em;
+        }
+        .ammenities {
+          font-size: 0.583em;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
