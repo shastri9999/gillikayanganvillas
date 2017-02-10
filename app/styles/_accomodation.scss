@@ -2,7 +2,6 @@
 #accomodation {
   padding-left: 20px;
   margin-top: 20px;
-  max-width: $max-content-width;
   .rooms {
     width: 415px;
     .room {
@@ -23,11 +22,12 @@
       }
       .room-description {
         display: none;
-        width: 40vw;
+        width: 40%;
       }
       &:hover {
         height: 800px;
-        width: calc(100vw - 80px);
+        width: calc(100vw - 140px);
+        max-width: 1300px;
         .room-description {
           display: block;
         }
@@ -46,7 +46,7 @@
             display: flex;
             flex-flow: row wrap;
             right: 0 !important;
-            width: 80vw !important;
+            width: 80% !important;
             bottom: 20px !important;
             top: auto;
             .polaroid
@@ -136,8 +136,7 @@
           &.single {
             height: 100px;
             display: block;
-            right: 600px;
-            left: auto;
+            left: 35%;
             top: 160px;
             &.full {
               opacity: 0;
@@ -150,8 +149,7 @@
           &.double {
             height: 150px;
             display: block;
-            left: auto;
-            right: 600px;
+            left: 35%;
             &.full {
               display: none;
               transform: none;
@@ -163,8 +161,7 @@
           &.triple {
             height: 270px;
             display: block;
-            left: auto;
-            right: 600px;
+            left: 35%;
             top: 135px;
             &.full {
               opacity: 0;

@@ -1,9 +1,9 @@
 #polaroid-gallery {
   position: absolute;
   right: 0;
-  width: 30vw;
+  width: 30%;
   padding-top: 72px;
-  padding-left: 5vw;
+  padding-left: 20px;
   top: 0;
   bottom: 0;
   z-index: 1;
@@ -72,14 +72,13 @@
 #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
   position: absolute;
   right: 0;
-  width: calc(35vw - 20px);
+  width: calc(35% - 20px);
   padding-top: 0;
   top: 0;
   z-index: 1;
   transform-origin: top right;
   &.gallery{
     z-index: 6;
-    width: 35vw;
   }
   .polaroid {
     padding: 3px;
