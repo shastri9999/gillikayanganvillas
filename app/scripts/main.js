@@ -118,6 +118,13 @@
     var vw = windowElement.width();
     var leftPadding = 100;
     var topPadding = 50;
+    if (vw > 1300) {
+      leftPadding = (vw - 1100) / 2;
+    } else if (vw > 600) {
+      leftPadding = 100;
+    } else {
+      leftPadding = 50;
+    }
     var pw = vw - 2 * leftPadding;
     var ph = vh - 2 * topPadding;
     var degrees = polaroid.data('degrees');
@@ -151,6 +158,13 @@
     var vw = windowElement.width();
     var leftPadding = 100;
     var topPadding = 50;
+    if (vw > 1300) {
+      leftPadding = (vw - 1100) / 2;
+    } else if (vw > 600) {
+      leftPadding = 100;
+    } else {
+      leftPadding = 50;
+    }
     var pw = vw - 2 * leftPadding;
     var ph = vh - 2 * topPadding;
     var degrees = polaroid.data('degrees');
@@ -235,6 +249,7 @@
     }
     currentAnimatedIndex = -1;
     currentPrefix = 'none';
+    $('html, body').animate({scrollTop: '+=10px'}, 300);
   };
 
   $('.rooms').on('click', '.room.expanded', function() {
@@ -260,8 +275,8 @@
       var vw = $(window).width();
       var mainVariations = {
         degrees: [1, 10],
-        height: [0.15 * vw, 0.30 * vw],
-        width: [0.15 * vw, 0.30 * vw],
+        height: [0.17 * vw, 0.25 * vw],
+        width: [0.17 * vw, 0.25 * vw],
         tx: 10,
         ty: 125
       };

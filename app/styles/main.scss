@@ -1,4 +1,7 @@
-$max-content-width: 65vw;
+@import "variables";
+@import "location";
+@import "polaroid";
+@import "accomodation";
 html, body {
   font-family: 'La Belle Aurore', cursive;
   margin: 0;
@@ -9,19 +12,28 @@ html, body {
   box-sizing: border-box;
 }
 body {
-  position: relative;
-  padding-bottom: 480px;
   overflow-x: hidden;
+  background: white;
+}
+.main-wrapper {
+  background: white;
+  box-shadow: 1px 1px 40px rgba(0,0,0,0.4);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1300px;
+  padding-bottom: 480px;
+  position: relative;
 }
 header {
     position: absolute;
-    left: 0;
-    right: 0;
+    margin: auto;
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
     justify-content: space-around;
     top: 0;
+    left: 0;
+    right : 0;
     padding-top: 25px;
     &.fixed {
       position: fixed;
@@ -76,6 +88,7 @@ header {
 .hero-slider {
   .slide {
     height: 90vh;
+    max-height: 454px;
     background-size: cover;
     .container {
       display: flex;
@@ -126,228 +139,6 @@ header {
   margin-top: -150px;
   &.fixed {
     padding-top: 110px;
-  }
-  #location {
-    padding-left: 40px;
-    padding-top: 40px;
-    max-width: $max-content-width;
-    p {
-      font-size: 20px;
-      line-height: 34px;
-    }
-    .maps {
-        .map {
-          width: 40vw;
-        }
-    }
-  }
-  #accomodation {
-    padding-left: 40px;
-    margin-top: 20px;
-    max-width: $max-content-width;
-    .rooms {
-      width: 415px;
-      .room {
-        position: relative;
-        height: 300px;
-        width: 100%;
-        &.triple {
-          height: 350px;
-          width: 410px;
-        }
-        &.double {
-          height: 633px;
-          width: 410px;
-        }
-        &.single {
-          height: 295px;
-          width: 410px;
-        }
-        .room-description {
-          display: none;
-        }
-        &:hover {
-          height: 750px;
-          width: calc(100vw - 80px);
-          .room-description {
-            display: block;
-          }
-        }
-        &.expanded {
-          height: auto;
-          width: 100%;
-          z-index: 5;
-          background-color: #fff;
-          .room-overlay {
-            .room-description {
-              display: block;
-            }
-            .gallery {
-              display: flex;
-              flex-flow: row wrap;
-            }
-            top: -10px;
-            left: -10px;
-            bottom: -10px;
-            right: -10px;
-            z-index: 2;
-            &>img {
-              height: 200px;
-              left: calc(100% - 410px);
-              &.single {
-                height: 100px;
-                left: calc(100% - 260px);
-              }
-              &.double {
-                height: 150px;
-                left: calc(100% - 295px);
-              }
-              &.triple {
-                height: 200px;
-                left: calc(100% - 235px);
-              }
-              transform: rotate(180deg);
-              top:10px;
-            }
-          }
-        }
-      }
-      .room-overlay {
-        .gallery {
-          position: absolute;
-          right: 0;
-          top: 150px;
-          bottom: 0;
-          display: none;
-          &.single {
-            width: 500px;
-          }
-          &.double {
-            top: 180px;
-          }
-          &.triple {
-            top: 210px;
-          }
-        }
-        &>img{
-          position: absolute;
-          &.single {
-            left: 200px;
-            top: 5px;
-            height: 79px;
-            &.full {
-              opacity: 1;
-              left: 0;
-              top: 0;
-              height: 295px;
-            }
-          }
-          &.double {
-            left: 0;
-            top: 0;
-            height: 213px;
-            &.full {
-              opacity: 1;
-              height: 633px;
-              top: 0;
-              left: 0;
-            }
-          }
-          &.triple {
-            height: 350px;
-            top: 0;
-            left: 0;
-            &.full {
-              opacity: 1;
-            }
-          }
-        }
-        transform-origin: center center;
-        display: flex;
-        flex-direction: row;
-        padding: 30px;
-        padding-right: 260px;
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        &:hover {
-          transition: all 0.5s ease-in-out;
-          .gallery {
-            display: flex;
-            flex-flow: row wrap;
-          }
-          top: -10px;
-          left: -10px;
-          bottom: -10px;
-          right: -10px;
-          z-index: 2;
-          &>img {
-            transition: all 0.8s ease-in-out;
-            &.full {
-              transition: all 0.1s ease-in-out;
-            }
-            height: 200px;
-            left: calc(100% - 410px);
-            transform: rotate(180deg);
-            top:10px;
-
-            &.single {
-              height: 100px;
-              left: calc(100% - 260px);
-              display: block;
-              &.full {
-                opacity: 0;
-                transform: none;
-                left: 0;
-                top: 0;
-                height: 295px;
-              }
-            }
-            &.double {
-              height: 150px;
-              left: calc(100% - 295px);
-              display: block;
-              &.full {
-                display: none;
-                transform: none;
-                height: 633px;
-                top: 0;
-                left: 0;
-              }
-            }
-            &.triple {
-              height: 200px;
-              left: calc(100% - 235px);
-              display: block;
-              &.full {
-                opacity: 0;
-                transform: none;
-                height: 350px;
-                top: 0;
-                left: 0;
-              }
-            }
-          }
-        }
-        .room-description {
-          max-width: calc(100%  - 400px);
-          h2 {
-            font-size: 24px;
-          }
-          .size {
-            padding: 20px;
-            font-size: 18px;
-          }
-          .ammenities {
-            font-size: 15px;
-            margin: 0;
-          }
-        }
-      }
-    }
   }
   #threesixty{
     margin-top: 30px;
@@ -429,97 +220,9 @@ header {
       }
     }
   }
-  #polaroid-gallery {
-    position: absolute;
-    right: 0;
-    width: 35vw;
-    padding-top: 72px;
-    padding-left: 5vw;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    transform-origin: top right;
-    &.gallery{
-      z-index: 6;
-    }
-    .polaroid {
-      padding: 5px;
-      padding-bottom: 0;
-      box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
-      -webkit-backface-visibility: hidden;
-      background: white;
-      &:hover {
-        box-shadow: rgba(68, 61, 61, 0.5) 3px 3px 30px;
-        cursor: pointer;
-      }
-      .image {
-        margin-bottom: 20px;
-        height: calc(100% - 40px);
-        width: calc(100%);
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-      &.expanded {
-        position: fixed;
-        z-index: 6;
-      }
-      .description {
-        font-size: 22px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        text-align: center;
-        position: relative;
-        top: -18px;
-      }
-    }
-  }
-  #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
-    position: absolute;
-    right: 0;
-    width: 400px;
-    padding-top: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    transform-origin: top right;
-    &.gallery{
-      z-index: 6;
-      width: 420px;
-    }
-    .polaroid {
-      padding: 3px;
-      padding-bottom: 0;
-      box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
-      -webkit-backface-visibility: hidden;
-      background: white;
-      &:hover {
-        box-shadow: rgba(68, 61, 61, 0.5) 3px 3px 30px;
-        cursor: pointer;
-      }
-      .image {
-        margin-bottom: 10px;
-        height: calc(100% - 10px);
-        width: calc(100%);
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
-      &.expanded {
-        position: fixed;
-        z-index: 6;
-      }
-      .description {
-        font-size: 12px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        text-align: center;
-      }
-    }
-  }
 }
 #gallery-overlay {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
