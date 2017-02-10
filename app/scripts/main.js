@@ -277,7 +277,7 @@
                                 polaroid.description +
                                 '</div>' +
                               '</div>');
-      var vw = $(window).width();
+      var vw = Math.min($(window).width(), 1300);
       var mainVariations = {
         degrees: [1, 10],
         height: [0.17 * vw, 0.25 * vw],
@@ -379,10 +379,10 @@
       previousImage(currentPrefix);
     });
 
-    $('.rooms').mouseenter(function() {
+    $('.room-overlay').mouseenter(function() {
       $('#polaroid-gallery').hide();
     });
-    $('.rooms').mouseleave(function() {
+    $('.room-overlay').mouseleave(function() {
       if (currentPrefix === 'none') {
         $('#polaroid-gallery').show();
       }

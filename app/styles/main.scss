@@ -95,22 +95,22 @@ header {
       flex-direction: row;
       padding-top: 80px;
       &>img {
-        width: 20vw;
-        height: 25.97vw;
+        width: 20%;
+        height: 25.97%;
         display: inline;
       }
       .main-description {
         position: relative;
         max-width: 400px;
-        padding-top: 2vw;
+        padding-top: 5%;
         img {
-          height: 10vw;
+          height: 30%;
         }
         div {
           position: relative;
           white-space: nowrap;
           color: #593D29;
-          left: 2vw;
+          left: 7%;
         }
       }
     }
