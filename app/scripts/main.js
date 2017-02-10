@@ -259,14 +259,14 @@
                               '</div>');
       var vw = $(window).width();
       var mainVariations = {
-        degrees: [3, 40],
+        degrees: [1, 10],
         height: [0.15 * vw, 0.30 * vw],
         width: [0.15 * vw, 0.30 * vw],
         tx: 10,
         ty: 125
       };
       var roomVariations = {
-        degrees: [15, 30],
+        degrees: [1, 10],
         height: [140, 180],
         width: [180, 220],
         tx: 35,
@@ -370,7 +370,7 @@
 
     /* Adding smoothness to scroll on navigation click */
     $('body').smoothScroll({
-      offset: -40,
+      offset: -60,
       delegateSelector: 'header a'
     });
 
@@ -378,7 +378,7 @@
     var headerElement = $('header');
     var contentElement = $('#content');
     $(window).scroll(function() {
-      var offset = 100;
+      var offset = 5;
       var fromTop = $(this).scrollTop() + offset;
       var windowHeight = $(this).height();
       var ratio = (fromTop / windowHeight * 100);

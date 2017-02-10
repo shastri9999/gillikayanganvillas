@@ -3,7 +3,7 @@ html, body {
   font-family: 'La Belle Aurore', cursive;
   margin: 0;
   padding: 0;
-  font-size: 30px;
+  font-size: 24px;
 }
 * {
   box-sizing: border-box;
@@ -30,17 +30,7 @@ header {
       box-shadow: -4px -3px 12px #cfcfcf;
       padding-bottom: 5px;
       a {
-        font-size: 23px;
-        &.image {
-          position: relative;
-          top: 0;
-          img {
-            height: 40px;
-          }
-          .main-description {
-            display: none;
-          }
-        }
+        font-size: 1em;
         .underline {
           height: 1px;
         }
@@ -56,27 +46,10 @@ header {
       flex-direction: column;
       padding-bottom: 0;
       &.image {
-        position: absolute;
-        display: flex;
-        flex-direction: row;
-        top: 90px;
-        left: 40px;
-        &>img {
-          height: 50vh;
-        }
-        .main-description {
-          position: relative;
-          top: -5vh;
-          max-width: 400px;
-          img {
-            height: 15vh;
-          }
-          div {
-            position: relative;
-            top: -5vh;
-            left: 40px;
-            white-space: nowrap;
-          }
+        position: relative;
+        top: 0;
+        img {
+          height: 40px;
         }
       }
       .underline {
@@ -104,6 +77,30 @@ header {
   .slide {
     height: 90vh;
     background-size: cover;
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding-top: 80px;
+      &>img {
+        width: 20vw;
+        height: 25.97vw;
+        display: inline;
+      }
+      .main-description {
+        position: relative;
+        max-width: 400px;
+        padding-top: 2vw;
+        img {
+          height: 10vw;
+        }
+        div {
+          position: relative;
+          white-space: nowrap;
+          color: #593D29;
+          left: 2vw;
+        }
+      }
+    }
   }
   .slide-1{
     background-image: url(/images/slide1.jpg);
@@ -140,7 +137,7 @@ header {
     }
     .maps {
         .map {
-          width: 100%;
+          width: 40vw;
         }
     }
   }
