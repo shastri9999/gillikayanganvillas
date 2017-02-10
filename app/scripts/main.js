@@ -263,10 +263,15 @@
       event.stopPropagation();
       startGallery(polaroid);
     });
+    polaroidGalleryElement.on('click', '.close', function(event) {
+      event.stopPropagation();
+      stopGallery();
+    });
     images.forEach(function(polaroid, index) {
       var polaroidElement = $('<div title="click-me" class="polaroid" id="' +
                                 prefix +
                                 '-polaroid-' + index + '">' +
+                                '<div class="close">&#x2715;</div>' +
                                 '<div class="image"></div>' +
                                 '<div class="description">' +
                                 polaroid.description +
