@@ -77,5 +77,8 @@
 		}, {
 			"description": "Some lorem ipsum",
 			"url": "/images/gallery/triple/3.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/triple/4.jpg"
 		}]
 	}
