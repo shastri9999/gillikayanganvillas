@@ -132,7 +132,14 @@
     currentAnimatedIndex = Number(polaroid.data('index'));
     var iheight = Number(polaroid.data('iheight'));
     var iwidth = Number(polaroid.data('iwidth'));
-    ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
+    var rh = (iheight / iwidth) * (pw - 40) + 70;
+    /* Readjust if pw if ph is greater than possible height */
+    if (rh > ph) {
+      pw = (iwidth / iheight) * (ph - 70) + 40;
+      leftPadding = (vw - pw) / 2;
+    } else {
+      ph = rh;
+    }
     topPadding = (vh - ph) / 2;
     polaroid.addClass('expanded');
     polaroid.css({bottom: 0,
@@ -171,7 +178,14 @@
     currentAnimatedIndex = Number(polaroid.data('index'));
     var iheight = polaroid.data('iheight');
     var iwidth = polaroid.data('iwidth');
-    ph = Math.min((iheight / iwidth) * (pw - 40) + 70, ph);
+    var rh = (iheight / iwidth) * (pw - 40) + 70;
+    /* Readjust if pw if ph is greater than possible height */
+    if (rh > ph) {
+      pw = (iwidth / iheight) * (ph - 70) + 40;
+      leftPadding = (vw - pw) / 2;
+    } else {
+      ph = rh;
+    }
     topPadding = (vh - ph) / 2;
     polaroid.addClass('expanded');
     polaroid.css({top: 0,
