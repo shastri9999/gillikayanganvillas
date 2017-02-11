@@ -1,111 +1,81 @@
 {
 		"main": [{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
+			"url": "/images/gallery/main/1.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide4.jpg"
+			"url": "/images/gallery/main/2.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
+			"url": "/images/gallery/main/3.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
+			"url": "/images/gallery/main/4.jpg"
+		},{
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/main/5.jpg"
+		},{
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/main/6.jpg"
+		},{
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/main/7.jpg"
+		},{
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/main/8.jpg"
+		},{
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/main/1.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide2.jpg"
+			"url": "/images/gallery/main/2.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
+			"url": "/images/gallery/main/3.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
+			"url": "/images/gallery/main/4.jpg"
+		},{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide2.jpg"
-		}, {
+			"url": "/images/gallery/main/5.jpg"
+		},{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide4.jpg"
-		}, {
+			"url": "/images/gallery/main/6.jpg"
+		},{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide4.jpg"
-		}, {
+			"url": "/images/gallery/main/7.jpg"
+		},{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
+			"url": "/images/gallery/main/8.jpg"
 		}],
 		"single": [{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
+			"url": "/images/gallery/single/1.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide4.jpg"
+			"url": "/images/gallery/single/2.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide2.jpg"
+			"url": "/images/gallery/single/3.jpg"
 		}],
 		"double": [{
-				"description": "Some lorem ipsum",
-				"url": "/images/slide1.jpg"
-			}, {
-				"description": "Some lorem ipsum",
-				"url": "/images/slide4.jpg"
-			}, {
-				"description": "Some lorem ipsum",
-				"url": "/images/slide3.jpg"
-			}, {
-				"description": "Some lorem ipsum",
-				"url": "/images/slide1.jpg"
-			}, {
-				"description": "Some lorem ipsum",
-				"url": "/images/slide2.jpg"
-			}],
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/double/1.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/double/2.jpg"
+		}, {
+			"description": "Some lorem ipsum",
+			"url": "/images/gallery/double/3.jpg"
+		}],
 		"triple": [{
 			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
+			"url": "/images/gallery/triple/1.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide4.jpg"
+			"url": "/images/gallery/triple/2.jpg"
 		}, {
 			"description": "Some lorem ipsum",
-			"url": "/images/slide3.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide1.jpg"
-		}, {
-			"description": "Some lorem ipsum",
-			"url": "/images/slide2.jpg"
+			"url": "/images/gallery/triple/3.jpg"
 		}]
 	}
