@@ -381,6 +381,11 @@
 
     $('.room-overlay').mouseenter(function() {
       $('#polaroid-gallery').hide();
+      var roomElement = $(this);
+      setTimeout(function() {
+        $('html, body').animate({
+          scrollTop: roomElement.offset().top - 35}, 400);
+      }, 200);
     });
     $('.room-overlay').mouseleave(function() {
       if (currentPrefix === 'none') {
