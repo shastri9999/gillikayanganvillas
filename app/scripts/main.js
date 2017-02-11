@@ -416,6 +416,14 @@
       }
     });
 
+    /* Site minder integration */
+    $('.book').on('click', function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+      window.open('https://app-apac.thebookingbutton.com' +
+                  '/properties/gilikhayangandirect', '_blank');
+    });
+
     /* Sending email on form submit and validation */
 
     var showFormError = function(error) {

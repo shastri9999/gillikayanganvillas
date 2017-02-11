@@ -75,6 +75,28 @@
       left: 0;
       right: 0;
       bottom: 0;
+      .book {
+        position: absolute;
+        display: none;
+        left: 478px;
+        top: 60px;
+        background: #000;
+        color: #fff;
+        border: none;
+        padding: 12px 40px;
+        height: 55px;
+        font-family: La Belle Aurore,cursive;
+        font-size: 20px;
+        outline: none;
+        cursor: pointer;
+        &:disabled {
+          opacity: 0.4;
+        }
+        &:hover {
+          box-shadow: 1px 1px 7px;
+          opacity: 0.8;
+        }
+      }
       .gallery {
         position: absolute;
         right: 30px;
@@ -125,6 +147,9 @@
         bottom: -10px;
         right: -10px;
         z-index: 2;
+        .book {
+          display: block;
+        }
         .gallery {
           display: flex;
           flex-flow: row wrap;
