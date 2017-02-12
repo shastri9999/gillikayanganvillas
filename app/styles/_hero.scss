@@ -1,0 +1,103 @@
+.hero-slider {
+  .slide {
+    height: 90vh;
+    max-height: 454px;
+    background-size: cover;
+    @media screen and (max-width: 620px) {
+      max-height: 210px;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding-top: 80px;
+      &>img {
+        width: 20%;
+        height: 25.97%;
+        display: inline;
+      }
+      .main-description {
+        position: relative;
+        max-width: 400px;
+        padding-top: 5%;
+        img {
+          height: 30%;
+        }
+        div {
+          position: relative;
+          white-space: nowrap;
+          color: #593D29;
+          left: 7%;
+        }
+      }
+    }
+  }
+  .slide-1{
+    background-image: url(/images/slide1.jpg);
+  }
+  .slide-2{
+    background-image: url(/images/slide2.jpg);
+  }
+  .slide-3{
+    background-image: url(/images/slide3.jpg);
+  }
+  .owl-nav.disabled+.owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -96px;
+  }
+}
+@media screen and (max-width: 620px) {
+  .hero-slider {
+    .slide {
+      height: 90vh;
+      max-height: 454px;
+      background-size: cover;
+      @media screen and (max-width: 620px) {
+        max-height: 210px;
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        padding-top: 40px;
+        &>img {
+          width: 20%;
+          height: 25.97%;
+          display: inline;
+        }
+        .main-description {
+          position: relative;
+          max-width: 200px;
+          padding-top: 5%;
+          img {
+            height: 30%;
+          }
+          div {
+            position: relative;
+            white-space: normal;
+            color: #593D29;
+            left: 7%;
+          }
+        }
+      }
+    }
+    .slide-1{
+      background-image: url(/images/slide1.jpg);
+    }
+    .slide-2{
+      background-image: url(/images/slide2.jpg);
+      background-position-x: -150px;
+    }
+    .slide-3{
+      background-image: url(/images/slide3.jpg);
+      background-position-x: -195px;
+    }
+    .owl-nav.disabled+.owl-dots {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -43px;
+      transform: scale(0.5);
+    }
+  }
+}

@@ -2,6 +2,8 @@
 @import "location";
 @import "polaroid";
 @import "accomodation";
+@import "hero";
+@import "header";
 html, body {
   font-family: 'La Belle Aurore', cursive;
   margin: 0;
@@ -29,116 +31,6 @@ body {
   @media screen and (max-width: 620px) {
     padding-bottom: 335px;
     box-shadow: none;
-  }
-}
-header {
-    position: absolute;
-    margin: auto;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-    justify-content: space-around;
-    top: 0;
-    left: 0;
-    right : 0;
-    padding-top: 25px;
-    &.fixed {
-      position: fixed;
-      padding-top: 5px;
-      background: white;
-      box-shadow: -4px -3px 12px #cfcfcf;
-      padding-bottom: 5px;
-      a {
-        font-size: 1em;
-        .underline {
-          height: 1px;
-        }
-      }
-    }
-    a {
-      text-decoration: none;
-      color: #593D29;
-      position: relative;
-      transition: all 0.3s ease-in-out;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      padding-bottom: 0;
-      &.image {
-        position: relative;
-        top: 0;
-        img {
-          height: 40px;
-        }
-      }
-      .underline {
-        height: 2px;
-        background-color: #593d29;
-        width: 0%;
-        box-shadow: 1px 1px 1px;
-        -webkit-transition: width 0.3s ease-in-out;
-        -moz-transition: width 0.3s ease-in-out;
-        -o-transition: width 0.3s ease-in-out;
-        transition: width 0.3s ease-in-out;
-      }
-      &:hover {
-        transform: scale(1.1);
-        &.image {
-          transform: none;
-        }
-        .underline {
-          width: 100%;
-        }
-      }
-    }
-}
-.hero-slider {
-  .slide {
-    height: 90vh;
-    max-height: 454px;
-    background-size: cover;
-    @media screen and (max-width: 620px) {
-      max-height: 210px;
-    }
-    .container {
-      display: flex;
-      flex-direction: row;
-      padding-top: 80px;
-      &>img {
-        width: 20%;
-        height: 25.97%;
-        display: inline;
-      }
-      .main-description {
-        position: relative;
-        max-width: 400px;
-        padding-top: 5%;
-        img {
-          height: 30%;
-        }
-        div {
-          position: relative;
-          white-space: nowrap;
-          color: #593D29;
-          left: 7%;
-        }
-      }
-    }
-  }
-  .slide-1{
-    background-image: url(/images/slide1.jpg);
-  }
-  .slide-2{
-    background-image: url(/images/slide2.jpg);
-  }
-  .slide-3{
-    background-image: url(/images/slide3.jpg);
-  }
-  .owl-nav.disabled+.owl-dots {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    margin-left: -96px;
   }
 }
 #content {

@@ -1,0 +1,115 @@
+header {
+    position: absolute;
+    margin: auto;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+    left: 0;
+    right : 0;
+    padding-top: 25px;
+    &.fixed {
+      position: fixed;
+      padding-top: 5px;
+      background: white;
+      box-shadow: -4px -3px 12px #cfcfcf;
+      padding-bottom: 5px;
+      a {
+        font-size: 1em;
+        .underline {
+          height: 1px;
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #593D29;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-bottom: 0;
+      &.image {
+        position: relative;
+        top: 0;
+        img {
+          height: 40px;
+        }
+      }
+      .underline {
+        height: 2px;
+        background-color: #593d29;
+        width: 0%;
+        box-shadow: 1px 1px 1px;
+        -webkit-transition: width 0.3s ease-in-out;
+        -moz-transition: width 0.3s ease-in-out;
+        -o-transition: width 0.3s ease-in-out;
+        transition: width 0.3s ease-in-out;
+      }
+      &:hover {
+        transform: scale(1.1);
+        &.image {
+          transform: none;
+        }
+        .underline {
+          width: 100%;
+        }
+      }
+    }
+}
+@media screen and (max-width: 620px) {
+  header {
+      position: absolute;
+      margin: auto;
+      display: flex;
+      justify-content: space-around;
+      top: 0;
+      left: 0;
+      right : 0;
+      padding-top: 5px;
+      &.fixed {
+        position: fixed;
+        padding-top: 5px;
+        background: white;
+        box-shadow: -4px -3px 12px #cfcfcf;
+        padding-bottom: 5px;
+        a {
+          font-size: 1em;
+          .underline {
+            height: 1px;
+          }
+        }
+      }
+      a {
+        text-decoration: none;
+        color: #593D29;
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 0;
+        &.image {
+          display: none;
+        }
+        .underline {
+          height: 2px;
+          background-color: #593d29;
+          width: 0%;
+          box-shadow: 1px 1px 1px;
+          transition: width 0.3s ease-in-out;
+        }
+        &:hover {
+          transform: scale(1.1);
+          &.image {
+            transform: none;
+          }
+          .underline {
+            width: 100%;
+          }
+        }
+      }
+  }
+}

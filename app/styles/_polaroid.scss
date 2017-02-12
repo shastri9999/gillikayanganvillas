@@ -68,7 +68,72 @@
     }
   }
 }
-
+@media screen and (max-width: 620px) {
+  #polaroid-gallery {
+    position: absolute;
+    right: 0;
+    width: 30%;
+    padding-top: 72px;
+    padding-left: 20px;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    transform-origin: top right;
+    &.gallery{
+      z-index: 6;
+      .polaroid {
+        opacity: 0.2;
+        &.expanded {
+          opacity: 1;
+          .close {
+            display: block;
+          }
+        }
+      }
+    }
+    .polaroid {
+      padding: 2px;
+      padding-bottom: 0;
+      box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
+      -webkit-backface-visibility: hidden;
+      background: white;
+      position: relative;
+      .close {
+        display: none;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #fff;
+        height: 30px;
+        width: 30px;
+        border-radius: 30px;
+        font-size: 14px;
+        box-shadow: 1px 1px 7px;
+        text-align: center;
+        line-height: 32px;
+        cursor: pointer;
+      }
+      &:hover {
+        box-shadow: rgba(68, 61, 61, 0.5) 3px 3px 30px;
+        cursor: pointer;
+      }
+      .image {
+        margin-bottom: 0px;
+        height: calc(100% - 2px);
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      &.expanded {
+        position: fixed;
+        z-index: 6;
+      }
+      .description {
+        display: none;
+      }
+    }
+  }
+}
 #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
   position: absolute;
   right: 0;

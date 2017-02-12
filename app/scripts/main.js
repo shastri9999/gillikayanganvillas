@@ -421,7 +421,12 @@
       var fromTop = $(this).scrollTop() + offset;
       var windowHeight = $(this).height();
       var ratio = (fromTop / windowHeight * 100);
-      if (ratio >= 90 || fromTop > 460) {
+      var windowWidth = $(this).width();
+      var maxHeight = 460;
+      if (windowWidth < 600) {
+        maxHeight = 210;
+      }
+      if (ratio >= 90 || fromTop > maxHeight) {
         headerElement.addClass('fixed');
         contentElement.addClass('fixed');
       } else {
