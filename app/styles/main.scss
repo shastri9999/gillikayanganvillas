@@ -393,3 +393,42 @@ footer {
     }
   }
 }
+
+@media screen and (max-width: 620px) {
+  #next {
+    background: #ece6e6;
+    height: 40px;
+    width: 40px;
+    top: calc(50% - 30px);
+    position: fixed;
+    z-index: 7;
+    right: -20px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: none;
+    span {
+      position: absolute;
+      left: 9px;
+      font-size: 20px;
+      top: 4px;
+    }
+  }
+  #previous {
+    background: #ece6e6;
+    height: 40px;
+    width: 40px;
+    top: calc(50% - 30px);
+    position: fixed;
+    z-index: 7;
+    left: -20px;
+    border-radius: 100%;
+    cursor: pointer;
+    display: none;
+    span {
+      position: absolute;
+      right: 9px;
+      font-size: 20px;
+      top: 4px;
+    }
+  }
+}
