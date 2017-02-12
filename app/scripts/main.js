@@ -84,6 +84,7 @@
   var imagesDataLoaded = false;
   var animating = false;
   var currentPrefix = 'none';
+  var onMobileOverlay = false;
 
   var resetPolaroid = function() {
     var polaroid = $('.polaroid.expanded');
@@ -142,17 +143,26 @@
     }
     topPadding = (vh - ph) / 2;
     polaroid.addClass('expanded');
-    polaroid.css({bottom: 0,
-                  right: 0,
-                  transform: 'rotate(' + degrees + ')'})
-            .transition({top: topPadding,
-              right: leftPadding,
-              height: ph,
-              width: pw,
-              duration: 1000,
-              rotate: 0}, function() {
-                animating = false;
-              });
+    if (vw > 600) {
+      polaroid.css({bottom: 0,
+                    right: 0,
+                    transform: 'rotate(' + degrees + ')'})
+              .transition({top: topPadding,
+                right: leftPadding,
+                height: ph,
+                width: pw,
+                duration: 1000,
+                rotate: 0}, function() {
+                  animating = false;
+                });
+    } else {
+      polaroid.css({top: topPadding,
+                right: leftPadding,
+                height: ph,
+                width: pw,
+                rotate: 0});
+      animating = false;
+    }
   };
 
   var animatePolaroidFromLeft = function(polaroid) {
@@ -188,17 +198,26 @@
     }
     topPadding = (vh - ph) / 2;
     polaroid.addClass('expanded');
-    polaroid.css({top: 0,
-                  left: 0,
-                  transform: 'rotate(' + degrees + ')'})
-            .transition({top: topPadding,
-              left: leftPadding,
-              height: ph,
-              width: pw,
-              duration: 1000,
-              rotate: 0}, function() {
-                animating = false;
-              });
+    if (vw > 600) {
+      polaroid.css({top: 0,
+                    left: 0,
+                    transform: 'rotate(' + degrees + ')'})
+              .transition({top: topPadding,
+                left: leftPadding,
+                height: ph,
+                width: pw,
+                duration: 1000,
+                rotate: 0}, function() {
+                  animating = false;
+                });
+    } else {
+      polaroid.css({top: topPadding,
+                left: leftPadding,
+                height: ph,
+                width: pw,
+                rotate: 0});
+      animating = false;
+    }
   };
 
   var previousImage = function(prefix) {
@@ -225,10 +244,13 @@
   };
 
   var startGallery = function(polaroid) {
+    currentPrefix = polaroid.data('prefix');
+    if (currentPrefix === 'main' && onMobileOverlay) {
+      return;
+    }
     $('header').hide();
     $('#next').show();
     $('#previous').show();
-    currentPrefix = polaroid.data('prefix');
     if (currentPrefix === 'main') {
       $('#gallery-overlay').show();
       $('#polaroid-gallery').addClass('gallery');
@@ -412,14 +434,19 @@
     $('.room-overlay').mouseenter(function() {
       $('#polaroid-gallery').hide();
       var roomElement = $(this);
+      onMobileOverlay = true;
       setTimeout(function() {
         $('html, body').animate({
           scrollTop: roomElement.offset().top - 35}, 400);
       }, 200);
     });
-    $('.room-overlay').mouseleave(function() {
+    $('.room-overlay').mouseleave(function(event) {
       if (currentPrefix === 'none') {
+        event.stopPropagation();
         $('#polaroid-gallery').show();
+        setTimeout(function() {
+          onMobileOverlay = false;
+        }, 400);
       }
     });
 
