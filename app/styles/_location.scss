@@ -18,3 +18,24 @@
       }
   }
 }
+@media screen and (max-width: 620px) {
+  #location {
+    padding-left: 10px;
+    padding-top: 10px;
+    max-width: $max-content-width;
+    .text {
+      padding-right: 10px;
+      padding-left: 10px;
+      max-width: 300px;
+    }
+    p {
+      font-size: 0.66em;
+      line-height: 1.5;
+    }
+    .maps {
+        .map {
+          width: 65%;
+        }
+    }
+  }
+}

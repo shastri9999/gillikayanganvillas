@@ -7,6 +7,9 @@ html, body {
   margin: 0;
   padding: 0;
   font-size: 24px;
+  @media screen and (max-width: 620px) {
+    font-size: 12px;
+  }
 }
 * {
   box-sizing: border-box;
@@ -23,6 +26,10 @@ body {
   max-width: 1300px;
   padding-bottom: 480px;
   position: relative;
+  @media screen and (max-width: 620px) {
+    padding-bottom: 335px;
+    box-shadow: none;
+  }
 }
 header {
     position: absolute;
@@ -90,6 +97,9 @@ header {
     height: 90vh;
     max-height: 454px;
     background-size: cover;
+    @media screen and (max-width: 620px) {
+      max-height: 210px;
+    }
     .container {
       display: flex;
       flex-direction: row;
@@ -147,9 +157,13 @@ header {
     img {
       width: 92%;
     }
+    @media screen and (max-width: 620px) {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
   }
   #sayhello {
-    padding-left: 40px;
+    padding-left: 1.85em;
     form {
       display: -webkit-flex;
       display: -ms-flex;
@@ -159,10 +173,10 @@ header {
       input, textarea {
         background-color: #F7F7F7;
         outline: 0;
-        padding: 10px;
-        margin-bottom: 10px;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
         width: 80%;
-        font-size: 25px;
+        font-size: 1em;
         color: black;
         font-family: 'La Belle Aurore', cursive;
         border: 1px solid #DBDBDB;
@@ -173,16 +187,16 @@ header {
         }
       }
       textarea {
-        height: 250px;
+        height: 10em;
         resize: none;
       }
       input[type=submit]{
-        width: 300px;
+        width: 12em;
         color: white;
         background: black;
         cursor: pointer;
         border: none;
-        margin-bottom: 16px;
+        margin-bottom: 0.66em;
         &:hover {
           box-shadow: 1px 1px 7px;
           opacity: 0.8;
@@ -196,24 +210,24 @@ header {
         display: inline-block;
         width: 270px;
         position: relative;
-        top: 28px;
+        top: 1.2em;
         &.hide {
           display: none;
         }
         img {
-          height: 60px;
+          height: 2.5em;
         }
         position: relative;
         span {
           position: absolute;
-          left: 65px;
-          top:20px;
-          font-size: 15px;
+          left: 2.6em;
+          top:0.8em;
+          font-size: 0.6em;
         }
       }
       .form-error {
         color: red;
-        font-size: 15px;
+        font-size: 0.6em;
         &.hide {
           display: none;
         }
@@ -373,5 +387,103 @@ footer {
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+  }
+}
+@media screen and (max-width: 620px) {
+  footer {
+    hr {
+      width: calc(100% - 50px);
+      margin-top: 20px;
+      margin-bottom: 15px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 10px;
+    h2 {
+      font-size: 15px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column-reverse;
+      .left {
+        text-align: center;
+        &>div {
+          padding-left: 20px;
+          position: relative;
+          img {
+            position: relative;
+            height: 10px;
+            left: 0;
+            top: 3px;
+            &.address {
+              left: 4px;
+            }
+          }
+        }
+      }
+      .right {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .subscriber-error {
+            font-size: 7px;
+            color: red;
+            text-align: right;
+            display: none;
+          }
+          .input-group {
+            width: 200px;
+            button {
+              background: black;
+              color: white;
+              border: none;
+              padding: 5px;
+              height: 26px;
+              width: 50px;
+              font-family: 'La Belle Aurore', cursive;
+              font-size: 10px;
+              outline: none;
+              cursor: pointer;
+              &:disabled {
+                opacity: 0.4;
+              }
+            }
+            input {
+              width: calc(100% - 99px);
+              background-color: #f7f7f7;
+              margin: 0;
+              margin-right: -11px;
+              height: 26px;
+              position: relative;
+              top: -2px;
+              padding-left: 5px;
+              color: #000;
+              font-family: La Belle Aurore,cursive;
+              border: 1px solid #dbdbdb;
+              font-size: 10px;
+              outline: none;
+              &::placeholder {
+                font-family: 'La Belle Aurore', cursive;
+                color: black;
+              }
+            }
+          }
+      }
+    }
+    .bottom {
+      text-align: center;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
   }
 }
