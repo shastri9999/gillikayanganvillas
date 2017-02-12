@@ -70,15 +70,15 @@
 }
 @media screen and (max-width: 620px) {
   #polaroid-gallery {
-    position: absolute;
-    right: 0;
-    width: 30%;
-    padding-top: 72px;
-    padding-left: 20px;
-    top: 0;
-    bottom: 0;
-    z-index: 1;
-    transform-origin: top right;
+   position: absolute;
+   right: 0;
+   width: 33%;
+   padding-top: 20px;
+   padding-left: 5px;
+   top: 0;
+   bottom: 0;
+   z-index: 1;
+   transform-origin: top right;
     &.gallery{
       z-index: 6;
       .polaroid {
@@ -110,7 +110,7 @@
         font-size: 14px;
         box-shadow: 1px 1px 7px;
         text-align: center;
-        line-height: 32px;
+        line-height: 35px;
         cursor: pointer;
       }
       &:hover {
@@ -192,6 +192,67 @@
       text-overflow: ellipsis;
       overflow: hidden;
       text-align: center;
+    }
+  }
+}
+@media screen and (max-width: 620px) {
+  #double-polaroid-gallery, #single-polaroid-gallery, #triple-polaroid-gallery {
+    position: absolute;
+    right: 0;
+    width: calc(100% - 10px);
+    padding-top: 0;
+    left: 5px;
+    top: auto;
+    bottom: 0;
+    z-index: 1;
+    transform-origin: top right;
+    &.gallery{
+      z-index: 6;
+    }
+    .polaroid {
+      padding: 3px;
+      padding-bottom: 0;
+      box-shadow: rgba(68, 61, 61, 0.5) 1px 1px 9px;
+      -webkit-backface-visibility: hidden;
+      background: white;
+      position: relative;
+      &:hover {
+        box-shadow: rgba(68, 61, 61, 0.5) 3px 3px 30px;
+        cursor: pointer;
+      }
+      .close {
+        display: none;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background-color: #fff;
+        height: 30px;
+        width: 30px;
+        border-radius: 30px;
+        font-size: 12px;
+        box-shadow: 1px 1px 4px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+      }
+
+      .image {
+        margin-bottom: 10px;
+        height: calc(100% - 3px);
+        width: calc(100%);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      &.expanded {
+        position: fixed;
+        z-index: 6;
+        .close {
+          display: block;
+        }
+      }
+      .description {
+        display: none;
+      }
     }
   }
 }

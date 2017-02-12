@@ -33,6 +33,13 @@ body {
     box-shadow: none;
   }
 }
+@media screen and (max-width: 620px) {
+    padding-top: 40px;
+    margin-top: -40px;
+    &.fixed {
+      padding-top: 30px;
+    }
+}
 #content {
   background-color: #fff;
   position: relative;
@@ -40,7 +47,14 @@ body {
   padding-top: 150px;
   margin-top: -150px;
   &.fixed {
-    padding-top: 110px;
+    padding-top: 140px;
+  }
+  @media screen and (max-width: 620px) {
+      padding-top: 40px;
+      margin-top: -40px;
+      &.fixed {
+        padding-top: 30px;
+      }
   }
   #threesixty{
     margin-top: 30px;

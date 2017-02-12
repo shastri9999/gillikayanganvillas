@@ -223,3 +223,254 @@
     }
   }
 }
+@media screen and (max-width: 620px) {
+  #accomodation {
+    padding-left: 10px;
+    margin-top: 10px;
+    &>div:first-of-type {
+      width: 65%;
+    }
+    .rooms {
+      width: 100%;
+      .room {
+        position: relative;
+        height: 200px;
+        &.triple {
+          height: 149px;
+          width: 205px;
+        }
+        &.double {
+          height: 270px;
+          width: 205px;
+        }
+        &.single {
+          height: 126px;
+          width: 205px;
+          .book {
+             top: 30px !important;
+          }
+        }
+        .room-description {
+          display: none;
+          width: 100%;
+        }
+        &:hover {
+          height: 400px;
+          width: 100%;
+          max-width: 100vw;
+          margin-bottom: 30px;
+          .room-description {
+            display: block;
+          }
+          &.triple{
+            height: 350px;
+          }
+          &.double{
+            height: 325px;
+          }
+          &.single{
+            height: 315px;
+          }
+        }
+        &.expanded {
+          margin-bottom: 0;
+          height: auto !important;
+          width: 100%;
+          z-index: 5;
+          max-width: 100vw;
+          background-color: rgba(0,0,0,0.8);
+          .room-overlay {
+            z-index: 2;
+            width: 0 !important;
+            .book {
+              display: none !important;
+            }
+            .room-description {
+              display: none;
+            }
+            .gallery {
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: flex-end;
+              right: 0 !important;
+              width: 80% !important;
+              bottom: 20px !important;
+              top: auto;
+              .polaroid
+              {
+                opacity: 0;
+                &.expanded {
+                  opacity: 1;
+                }
+              }
+            }
+            &>img {
+              display: none !important;
+            }
+          }
+        }
+      }
+      .room-overlay {
+        transform-origin: center center;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        .book {
+          position: absolute;
+          display: none;
+          left: auto;
+          right: 45px;
+          top: 15px;
+          background: #000;
+          color: #fff;
+          border: none;
+          padding: 5px 8px;
+          height: 25px;
+          font-family: La Belle Aurore,cursive;
+          font-size: 10px;
+          outline: none;
+          cursor: pointer;
+          &:disabled {
+            opacity: 0.4;
+          }
+          &:hover {
+            box-shadow: 1px 1px 4px;
+            opacity: 0.8;
+          }
+        }
+        .gallery {
+          position: absolute;
+          right: 0px;
+          left: 0px;
+          height: 300px;
+          bottom: 0px;
+          display: none;
+          top: auto;
+        }
+        &>img{
+          position: absolute;
+          &.single {
+            left: 85px;
+            top: 2px;
+            height: 33px;
+            &.full {
+              opacity: 1;
+              left: 0;
+              top: 0;
+              height: 126px;
+            }
+          }
+          &.double {
+            left: 0;
+            top: 0;
+            height: 91px;
+            &.full {
+              opacity: 1;
+              height: 270px;
+              top: 0;
+              left: 0;
+            }
+          }
+          &.triple {
+            height: 149px;
+            top: 0;
+            left: 0;
+            &.full {
+              opacity: 1;
+            }
+          }
+        }
+        &:hover {
+          transition: all 0.5s ease-in-out;
+          top: -10px;
+          left: -10px;
+          bottom: -10px;
+          right: -10px;
+          z-index: 2;
+          .book {
+            display: block;
+          }
+          .gallery {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-end;
+            width: 100%;
+            bottom: 18px;
+            height: 100px;
+            left: -36px;
+          }
+          &>img {
+            transition: all 0.1s ease-in-out;
+            &.full {
+              transition: all 0.1s ease-in-out;
+            }
+            height: 100px;
+            top:75px;
+            &.single {
+              height: 45px;
+              display: block;
+              left: auto;
+              top: 70px;
+              right: 20px;
+              &.full {
+                opacity: 0;
+                transform: none;
+                left: 0;
+                top: 0;
+                height: 147px;
+              }
+            }
+            &.double {
+              height: 60px;
+              display: block;
+              left: auto;
+              right: 15px;
+              top: 60px;
+              &.full {
+                display: none;
+                transform: none;
+                height: 316px;
+                top: 0;
+                left: 0;
+              }
+            }
+            &.triple {
+              height: 90px;
+              display: block;
+              left: auto;
+              top: 48px;
+              right: 20px;
+              &.full {
+                opacity: 0;
+                transform: none;
+                height: 175px;
+                top: 0;
+                left: 0;
+              }
+            }
+          }
+        }
+        .room-description {
+          width: 100%;
+          h2 {
+            font-size: 0.6em;
+          }
+          .size {
+            font-size: 0.4em;
+          }
+          .ammenities {
+            font-size: 0.4em;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

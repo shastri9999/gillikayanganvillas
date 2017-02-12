@@ -306,6 +306,22 @@
         tx: 35,
         ty: 35
       };
+      if (vw < 620) {
+        mainVariations = {
+          degrees: [1, 10],
+          height: [0.23 * vw, 0.30 * vw],
+          width: [0.23 * vw, 0.30 * vw],
+          tx: 10,
+          ty: 35
+        };
+        roomVariations = {
+          degrees: [1, 10],
+          height: [60, 100],
+          width: [60, 100],
+          tx: 0,
+          ty: 0
+        };
+      }
       var variations = prefix === 'main' ? mainVariations : roomVariations;
       var sign = Math.random() <= 0.5 ? '-' : '';
       var xsign = Math.random() <= 0.5 ? '-' : '';
