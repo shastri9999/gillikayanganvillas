@@ -59,7 +59,7 @@
       .container {
         display: flex;
         flex-direction: row;
-        padding-top: 40px;
+        padding-top: 26px;
         &>img {
           width: 20%;
           height: 25.97%;
@@ -90,7 +90,7 @@
     }
     .slide-3{
       background-image: url(/images/slide3.jpg);
-      background-position-x: -195px;
+      background-position-x: -150px;
     }
     .owl-nav.disabled+.owl-dots {
       position: absolute;

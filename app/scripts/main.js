@@ -72,6 +72,30 @@
     });
   }
   var $ = window.$;
+
+  // var UtilsFactory = function() {
+  //
+  // };
+  //
+  // UtilsFactory.prototype = {
+  //   constructor: UtilsFactory,
+  //   isElementInView: function(element, fullyInView) {
+  //     var pageTop = $(window).scrollTop();
+  //     var pageBottom = pageTop + $(window).height();
+  //     var elementTop = $(element).offset().top;
+  //     var elementBottom = elementTop + $(element).height();
+  //     var inView = false;
+  //
+  //     if (fullyInView === true) {
+  //       inView = ((pageTop < elementTop) && (pageBottom > elementBottom));
+  //     } else {
+  //       inView = ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+  //     }
+  //     return inView;
+  //   }
+  // };
+  //
+  // var Utils = new UtilsFactory();
   // Your custom JavaScript goes here
 
   var validateEmail = function(email) {
